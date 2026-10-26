@@ -2,7 +2,7 @@
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
 html { scroll-behavior: smooth; }
 body { background: #f4f6f8; color: #1f2937; line-height: 1.6; }
-a { color: inherit; }
+a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 
 /* ===== ШАПКА ===== */
@@ -11,15 +11,23 @@ header {
     position: sticky; top: 0; z-index: 100;
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
+
+/* Логотип */
+.logo { display: flex; align-items: center; }
+.logo-img { 
+    height: 40px; /* Высота логотипа, можете изменить */
+    width: auto; 
+    object-fit: contain;
+}
+
+/* Верхняя панель (ПК) */
 .top-bar {
     display: flex; justify-content: space-between; align-items: center;
     gap: 15px; padding: 12px 24px; max-width: 1200px; margin: 0 auto;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
-.logo { font-size: 20px; font-weight: 800; letter-spacing: 1px; text-decoration: none; color: #fff; }
-.logo span { color: #f59e0b; }
-.top-contacts { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
-.top-contacts a { color: #e5e7eb; text-decoration: none; font-size: 15px; }
+.top-contacts { display: flex; gap: 12px; align-items: center; }
+.top-contacts a { color: #e5e7eb; font-size: 15px; }
 .top-contacts a:hover { color: #f59e0b; }
 .phone-btn {
     background: #f59e0b; color: #111 !important;
@@ -32,21 +40,24 @@ header {
 .messengers a {
     width: 38px; height: 38px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    background: #1f2937; color: #fff; text-decoration: none;
-    transition: .2s; font-size: 14px; font-weight: 700;
+    background: #1f2937; color: #fff; transition: .2s; 
+    font-size: 13px; font-weight: 700;
 }
 .messengers a:hover { transform: scale(1.1); }
 .messengers a.wa { background: #25D366; }
 .messengers a.tg { background: #229ED9; }
 .messengers a.max { background: #8B5CF6; }
 
+/* Мобильная панель (скрыта на ПК) */
+.mobile-top-bar { display: none; }
+
+/* Навигация */
 nav {
     background: #1f2937; display: flex; gap: 6px; padding: 0 24px;
     max-width: 1200px; margin: 0 auto; overflow-x: auto;
 }
 nav a {
-    color: #d1d5db; text-decoration: none; padding: 14px 16px;
-    font-size: 15px; font-weight: 500; white-space: nowrap;
+    color: #d1d5db; padding: 14px 16px; font-size: 15px; font-weight: 500; white-space: nowrap;
     border-bottom: 3px solid transparent; transition: .2s;
 }
 nav a:hover, nav a.active { color: #f59e0b; border-bottom-color: #f59e0b; }
@@ -79,7 +90,7 @@ nav a:hover, nav a.active { color: #f59e0b; border-bottom-color: #f59e0b; }
 /* ===== КНОПКИ ===== */
 .btn {
     display: inline-block; background: #f59e0b; color: #111;
-    padding: 13px 28px; border-radius: 8px; text-decoration: none;
+    padding: 13px 28px; border-radius: 8px;
     font-weight: 700; font-size: 16px; border: none; cursor: pointer;
     transition: .2s;
 }
@@ -167,7 +178,7 @@ section .subtitle {
 }
 .contact-card .icon { font-size: 34px; margin-bottom: 10px; }
 .contact-card h3 { font-size: 17px; margin-bottom: 8px; }
-.contact-card a { color: #d97706; text-decoration: none; font-weight: 600; }
+.contact-card a { color: #d97706; font-weight: 600; }
 .contact-card a:hover { text-decoration: underline; }
 .contact-card p { color: #4b5563; font-size: 15px; }
 .contact-card .hint { font-size: 13px; color: #9ca3af; margin-top: 6px; }
@@ -181,8 +192,7 @@ section .subtitle {
 .messenger-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 .messenger-btn {
     display: inline-flex; align-items: center; gap: 8px;
-    padding: 12px 20px; border-radius: 8px; text-decoration: none;
-    font-weight: 600; color: #fff; transition: .2s;
+    padding: 12px 20px; border-radius: 8px; font-weight: 600; color: #fff; transition: .2s;
 }
 .messenger-btn:hover { transform: translateY(-2px); }
 .messenger-btn.wa { background: #25D366; }
@@ -198,8 +208,7 @@ section .subtitle {
 .form-box h3 { margin-bottom: 18px; text-align: center; }
 .form-box input, .form-box textarea, .form-box select {
     width: 100%; padding: 12px 14px; margin-bottom: 14px;
-    border: 1px solid #d1d5db; border-radius: 8px; font-size: 15px;
-    font-family: inherit;
+    border: 1px solid #d1d5db; border-radius: 8px; font-size: 15px; font-family: inherit;
 }
 .form-box input:focus, .form-box textarea:focus, .form-box select:focus {
     outline: none; border-color: #f59e0b;
@@ -214,14 +223,11 @@ footer {
     background: #111827; color: #9ca3af; padding: 34px 24px;
     text-align: center; font-size: 14px;
 }
-footer a { color: #f59e0b; text-decoration: none; }
+footer a { color: #f59e0b; }
 footer .footer-messengers { margin-top: 12px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-footer .footer-messengers a {
-    display: inline-flex; align-items: center; gap: 6px;
-    color: #e5e7eb; font-size: 14px;
-}
+footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6px; color: #e5e7eb; font-size: 14px; }
 
-/* ===== ПЛАВАЮЩАЯ КНОПКА ЗВОНКА ===== */
+/* ===== ПЛАВАЮЩАЯ КНОПКА ЗВОНКА (только для телефона) ===== */
 .call-float {
     position: fixed; bottom: 20px; right: 20px; z-index: 200;
     width: 60px; height: 60px; border-radius: 50%;
@@ -231,19 +237,45 @@ footer .footer-messengers a {
     box-shadow: 0 6px 20px rgba(245,158,11,0.5); transition: .2s;
 }
 .call-float:hover { background: #d97706; transform: scale(1.08); }
-@media (min-width: 769px) { .call-float { display: none; } }
 
-/* ===== АДАПТИВ ===== */
-@media (max-width: 860px) {
-    .service-detail { grid-template-columns: 1fr; }
-    .service-detail.reverse .text { order: 0; }
-    .hero h1, .slide-content h2 { font-size: 30px; }
-}
+/* =======================================================
+   АДАПТИВ (Мобильная версия)
+   ======================================================= */
 @media (max-width: 768px) {
-    .top-bar { flex-direction: column; align-items: flex-start; }
+    /* Скрываем десктопную панель контактов */
+    .desktop-contacts { display: none !important; }
+    
+    /* Показываем мобильную панель */
+    .mobile-top-bar {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 10px 16px; max-width: 1200px; margin: 0 auto;
+    }
+    
+    /* Блок иконок справа */
+    .mobile-actions { display: flex; align-items: center; gap: 12px; }
+    .icon-btn { font-size: 22px; text-decoration: none; }
+    
+    /* Мессенджеры на телефоне делаем чуть меньше */
+    .mobile-messengers a { width: 32px; height: 32px; font-size: 11px; }
+    
+    /* Кнопка телефона */
+    .call-btn {
+        background: #f59e0b; color: #111;
+        padding: 8px 10px; border-radius: 50%;
+        font-size: 18px; line-height: 1;
+    }
+
+    /* Скрываем плавающую кнопку звонка, так как она теперь в шапке */
+    .call-float { display: none !important; }
+
+    /* Навигация и остальной контент */
+    .top-bar { display: none; } /* Скрываем старый верхний бар на мобильных */
+    nav { padding: 0 16px; justify-content: flex-start; }
     section { padding: 40px 16px; }
-    .slider { height: 420px; }
+    .slider { height: 400px; }
     .slide-content h2 { font-size: 26px; }
     .slide-content p { font-size: 16px; }
     .service-body-inner { padding-left: 24px; }
+    .service-detail { grid-template-columns: 1fr; }
+    .service-detail.reverse .text { order: 0; }
 }
