@@ -12,19 +12,13 @@ header {
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
-/* Логотип */
 .logo { display: flex; align-items: center; }
-.logo-img { 
-    height: 40px; /* Высота логотипа, можете изменить */
-    width: auto; 
-    object-fit: contain;
-}
+.logo-img { height: 40px; width: auto; object-fit: contain; }
 
-/* Верхняя панель (ПК) */
+/* ПК-панель */
 .top-bar {
     display: flex; justify-content: space-between; align-items: center;
     gap: 15px; padding: 12px 24px; max-width: 1200px; margin: 0 auto;
-    flex-wrap: nowrap;
 }
 .top-contacts { display: flex; gap: 12px; align-items: center; }
 .top-contacts a { color: #e5e7eb; font-size: 15px; }
@@ -35,7 +29,6 @@ header {
 }
 .phone-btn:hover { background: #d97706; color: #fff !important; }
 
-/* Мессенджеры */
 .messengers { display: flex; gap: 8px; align-items: center; }
 .messengers a {
     width: 38px; height: 38px; border-radius: 50%;
@@ -48,8 +41,8 @@ header {
 .messengers a.tg { background: #229ED9; }
 .messengers a.max { background: #8B5CF6; }
 
-/* Мобильная панель (скрыта на ПК) */
-.mobile-top-bar { display: none; }
+/* Мобильная панель */
+.mobile-header { display: none; }
 
 /* Навигация */
 nav {
@@ -70,236 +63,146 @@ nav a:hover, nav a.active { color: #f59e0b; border-bottom-color: #f59e0b; }
     text-align: center; color: #fff; padding: 30px;
 }
 .slide.active { opacity: 1; }
-.slide::before {
-    content: ''; position: absolute; inset: 0;
-    background: rgba(17,24,39,0.65); z-index: 1;
-}
+.slide::before { content: ''; position: absolute; inset: 0; background: rgba(17,24,39,0.65); z-index: 1; }
 .slide-content { position: relative; z-index: 2; max-width: 800px; }
 .slide-content h2 { font-size: 38px; margin-bottom: 14px; }
 .slide-content p { font-size: 18px; opacity: .95; }
-.slider-dots {
-    position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-    z-index: 3; display: flex; gap: 10px;
-}
-.slider-dots button {
-    width: 12px; height: 12px; border-radius: 50%;
-    border: 2px solid #fff; background: transparent; cursor: pointer;
-}
+.slider-dots { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; gap: 10px; }
+.slider-dots button { width: 12px; height: 12px; border-radius: 50%; border: 2px solid #fff; background: transparent; cursor: pointer; }
 .slider-dots button.active { background: #f59e0b; border-color: #f59e0b; }
 
 /* ===== КНОПКИ ===== */
-.btn {
-    display: inline-block; background: #f59e0b; color: #111;
-    padding: 13px 28px; border-radius: 8px;
-    font-weight: 700; font-size: 16px; border: none; cursor: pointer;
-    transition: .2s;
-}
+.btn { display: inline-block; background: #f59e0b; color: #111; padding: 13px 28px; border-radius: 8px; font-weight: 700; font-size: 16px; border: none; cursor: pointer; transition: .2s; }
 .btn:hover { background: #d97706; color: #fff; transform: translateY(-2px); }
-.btn-outline { background: transparent; color: #fff; border: 2px solid #fff; }
-.btn-outline:hover { background: #fff; color: #111; }
-.btn-sm { padding: 10px 18px; font-size: 14px; }
 
 /* ===== СЕКЦИИ ===== */
 section { padding: 60px 24px; }
-.container { max-width: 1100px; margin: 0 auto; }
+.container { max-width: 1200px; margin: 0 auto; }
 section h2 { font-size: 30px; margin-bottom: 12px; text-align: center; }
-section .subtitle {
-    text-align: center; color: #6b7280; margin-bottom: 40px;
-    max-width: 700px; margin-left: auto; margin-right: auto;
+section .subtitle { text-align: center; color: #6b7280; margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+/* ===== СЕТКА КАРТОЧЕК УСЛУГ (КАК У BGT) ===== */
+.services-grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
 }
 
-/* ===== УСЛУГИ (аккордеон) ===== */
-.services-list { display: flex; flex-direction: column; gap: 16px; }
-.service-item {
-    background: #fff; border-radius: 12px; overflow: hidden;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-    border-left: 5px solid #f59e0b; transition: .3s;
-}
-.service-item:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
-.service-header {
-    display: flex; align-items: center; gap: 16px;
-    padding: 22px 24px; cursor: pointer; user-select: none;
-}
-.service-header .icon { font-size: 32px; flex-shrink: 0; }
-.service-header h3 { font-size: 20px; flex: 1; }
-.service-header .arrow { font-size: 20px; color: #f59e0b; transition: .3s; }
-.service-item.open .arrow { transform: rotate(180deg); }
-.service-body { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
-.service-body-inner { padding: 0 24px 24px 72px; color: #4b5563; }
-.service-body-inner ul { list-style: none; margin: 12px 0; }
-.service-body-inner ul li { padding-left: 24px; position: relative; margin-bottom: 8px; }
-.service-body-inner ul li::before { content: '🔧'; position: absolute; left: 0; }
-.service-body-inner .btn-wrap { margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap; }
-
-/* ===== ГАЛЕРЕЯ ===== */
-.gallery-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 16px;
-}
-.gallery-item {
-    border-radius: 10px; overflow: hidden; position: relative;
-    aspect-ratio: 4/3; background: #ddd; box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: .3s;
-}
-.gallery-item:hover { transform: scale(1.03); }
-.gallery-item img { width: 100%; height: 100%; object-fit: cover; }
-.gallery-item .caption {
-    position: absolute; bottom: 0; left: 0; right: 0;
-    background: linear-gradient(transparent, rgba(0,0,0,0.8));
-    color: #fff; padding: 20px 12px 10px; font-size: 14px;
+.service-card {
+    position: relative;
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
-/* ===== О НАС ===== */
-.about-text { max-width: 800px; margin: 0 auto; text-align: center; color: #4b5563; font-size: 17px; }
+/* Фоновая картинка внутри карточки */
+.service-card-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: 0.5s ease;
+}
 
-/* ===== ДЕТАЛЬНЫЙ РАЗДЕЛ УСЛУГИ ===== */
-.service-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-.service-detail.reverse .text { order: 2; }
-.service-detail .text h2 { text-align: left; margin-bottom: 16px; }
-.service-detail .text p { color: #4b5563; margin-bottom: 14px; }
-.service-detail .text ul { list-style: none; margin: 18px 0; }
-.service-detail .text ul li { padding-left: 26px; position: relative; margin-bottom: 10px; color: #374151; }
-.service-detail .text ul li::before { content: '🔧'; position: absolute; left: 0; }
-.service-detail .image {
-    border-radius: 14px; overflow: hidden; min-height: 300px;
-    background-size: cover; background-position: center;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+/* Затемнение картинки, чтобы читался текст */
+.service-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6); /* Темная пленка */
+    z-index: 1;
+    transition: 0.3s ease;
 }
-.service-detail .btn-wrap { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
 
-/* ===== КОНТАКТЫ ===== */
-.contacts-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px; margin-bottom: 30px;
+/* Текст поверх картинки */
+.service-card h3 {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.3;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
 }
-.contact-card {
-    background: #fff; padding: 26px; border-radius: 12px;
-    text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-}
-.contact-card .icon { font-size: 34px; margin-bottom: 10px; }
-.contact-card h3 { font-size: 17px; margin-bottom: 8px; }
-.contact-card a { color: #d97706; font-weight: 600; }
-.contact-card a:hover { text-decoration: underline; }
-.contact-card p { color: #4b5563; font-size: 15px; }
-.contact-card .hint { font-size: 13px; color: #9ca3af; margin-top: 6px; }
 
-.messenger-block {
-    background: #fff; border-radius: 12px; padding: 30px;
-    text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.06); margin-top: 20px;
+/* Эффект при наведении */
+.service-card:hover .service-card-bg {
+    transform: scale(1.1); /* Картинка приближается */
 }
-.messenger-block h3 { margin-bottom: 8px; }
-.messenger-block p { color: #6b7280; margin-bottom: 18px; }
-.messenger-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-.messenger-btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 12px 20px; border-radius: 8px; font-weight: 600; color: #fff; transition: .2s;
+.service-card:hover::before {
+    background: rgba(0, 0, 0, 0.4); /* Затемнение становится светлее */
 }
-.messenger-btn:hover { transform: translateY(-2px); }
-.messenger-btn.wa { background: #25D366; }
-.messenger-btn.tg { background: #229ED9; }
-.messenger-btn.max { background: #8B5CF6; }
-.messenger-btn.call { background: #f59e0b; color: #111; }
+.service-card:hover h3 {
+    color: #f59e0b; /* Текст становится желтым */
+}
 
 /* ===== ФОРМА ===== */
-.form-box {
-    background: #fff; border-radius: 12px; padding: 30px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.06); max-width: 600px; margin: 30px auto 0;
-}
+.form-box { background: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 4px 16px rgba(0,0,0,0.06); max-width: 600px; margin: 30px auto 0; }
 .form-box h3 { margin-bottom: 18px; text-align: center; }
-.form-box input, .form-box textarea, .form-box select {
-    width: 100%; padding: 12px 14px; margin-bottom: 14px;
-    border: 1px solid #d1d5db; border-radius: 8px; font-size: 15px; font-family: inherit;
-}
-.form-box input:focus, .form-box textarea:focus, .form-box select:focus {
-    outline: none; border-color: #f59e0b;
-}
+.form-box input, .form-box textarea, .form-box select { width: 100%; padding: 12px 14px; margin-bottom: 14px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 15px; font-family: inherit; }
+.form-box input:focus, .form-box textarea:focus, .form-box select:focus { outline: none; border-color: #f59e0b; }
 .form-box .btn { width: 100%; }
 .form-message { margin-top: 12px; padding: 12px; border-radius: 8px; display: none; text-align: center; font-size: 14px; }
 .form-message.success { background: #d1fae5; color: #065f46; display: block; }
 .form-message.error { background: #fee2e2; color: #991b1b; display: block; }
 
 /* ===== ФУТЕР ===== */
-footer {
-    background: #111827; color: #9ca3af; padding: 34px 24px;
-    text-align: center; font-size: 14px;
-}
+footer { background: #111827; color: #9ca3af; padding: 34px 24px; text-align: center; font-size: 14px; }
 footer a { color: #f59e0b; }
 footer .footer-messengers { margin-top: 12px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6px; color: #e5e7eb; font-size: 14px; }
 
-/* ===== ПЛАВАЮЩАЯ КНОПКА ЗВОНКА (только для телефона) ===== */
-.call-float {
-    position: fixed; bottom: 20px; right: 20px; z-index: 200;
-    width: 60px; height: 60px; border-radius: 50%;
-    background: #f59e0b; color: #111; display: flex;
-    align-items: center; justify-content: center;
-    font-size: 26px; text-decoration: none;
-    box-shadow: 0 6px 20px rgba(245,158,11,0.5); transition: .2s;
-}
-.call-float:hover { background: #d97706; transform: scale(1.08); }
-
 /* =======================================================
-   АДАПТИВ (Мобильная версия)
+   ПЛАВАЮЩАЯ КНОПКА С ВЕЕРОМ (FAB)
    ======================================================= */
+.fab-container { display: none; }
+
 @media (max-width: 768px) {
-    /* Скрываем десктопную панель контактов */
-    .desktop-contacts { display: none !important; }
-    
-    /* Показываем мобильную панель */
-    .mobile-top-bar {
+    /* ===== АДАПТИВ ШАПКИ ===== */
+    .desktop-header { display: none !important; }
+    .mobile-header {
         display: flex; justify-content: space-between; align-items: center;
-        padding: 10px 16px; max-width: 1200px; margin: 0 auto;
+        padding: 10px 16px; max-width: 100%; margin: 0 auto;
     }
-    
-    /* Блок иконок справа */
     .mobile-actions { display: flex; align-items: center; gap: 12px; }
-    .icon-btn { font-size: 22px; text-decoration: none; }
+    .icon-btn { font-size: 22px; text-decoration: none; color: #fff; }
+    .phone-icon { background: #f59e0b; color: #111; padding: 8px 10px; border-radius: 50%; line-height: 1; }
+    .logo-img { height: 35px; }
     
-    /* Мессенджеры на телефоне делаем чуть меньше */
-    .mobile-messengers a { width: 32px; height: 32px; font-size: 11px; }
-    
-    /* Кнопка телефона */
-    .call-btn {
-        background: #f59e0b; color: #111;
-        padding: 8px 10px; border-radius: 50%;
-        font-size: 18px; line-height: 1;
-    }
-
-    /* Скрываем плавающую кнопку звонка, так как она теперь в шапке */
-    .call-float { display: none !important; }
-
-    /* Навигация и остальной контент */
-    .top-bar { display: none; } /* Скрываем старый верхний бар на мобильных */
     nav { padding: 0 16px; justify-content: flex-start; }
     section { padding: 40px 16px; }
     .slider { height: 400px; }
     .slide-content h2 { font-size: 26px; }
     .slide-content p { font-size: 16px; }
-    .service-body-inner { padding-left: 24px; }
-    .service-detail { grid-template-columns: 1fr; }
-    .service-detail.reverse .text { order: 0; }
-}
 
-/* =======================================================
-   ПЛАВАЮЩАЯ КНОПКА С ВЕЕРОМ (FAB)
-   ======================================================= */
-.fab-container {
-    display: none; /* Скрыто на ПК */
-}
+    /* ===== АДАПТИВ КАРТОЧЕК УСЛУГ ===== */
+    .services-grid-cards {
+        grid-template-columns: 1fr; /* На телефоне в одну колонку */
+    }
 
-@media (max-width: 768px) {
+    /* ===== ПЛАВАЮЩАЯ КНОПКА (ПО ЦЕНТРУ) ===== */
     .fab-container {
         display: flex;
         position: fixed;
         bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
+        left: 0;
+        right: 0;
+        width: 100%;
+        justify-content: center; /* Центрируем */
         z-index: 1000;
         flex-direction: column;
-        align-items: flex-end;
+        align-items: center;
+        pointer-events: none;
     }
 
-    /* Главная кнопка */
     .fab-main {
         width: 60px;
         height: 60px;
@@ -316,43 +219,38 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
         transition: 0.3s ease;
         position: relative;
         z-index: 2;
+        pointer-events: auto;
     }
     
     .fab-main:active { transform: scale(0.95); }
-
-    /* Иконки (плюс/крестик) внутри главной кнопки */
     .fab-icon-close { display: none; font-size: 24px; }
     
     .fab-container.open .fab-main {
-        background: #374151; /* Темнеет при открытии */
+        background: #374151;
         color: #fff;
         box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-        transform: rotate(90deg); /* Крутится */
+        transform: rotate(90deg);
     }
     .fab-container.open .fab-icon-open { display: none; }
     .fab-container.open .fab-icon-close { display: block; }
 
-    /* Контейнер для мелких кнопок */
     .fab-options {
         display: flex;
         flex-direction: column;
         gap: 12px;
         margin-bottom: 15px;
-        /* Начальное состояние (спрятаны) */
         opacity: 0;
         pointer-events: none;
         transform: translateY(20px);
         transition: 0.3s ease;
     }
 
-    /* Когда меню открыто */
     .fab-container.open .fab-options {
         opacity: 1;
         pointer-events: auto;
         transform: translateY(0);
     }
 
-    /* Мелкие кнопки */
     .fab-option {
         width: 50px;
         height: 50px;
@@ -369,8 +267,7 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     }
     
     .fab-option:active { transform: scale(0.9); }
-
-    .fab-option.call { background: #10b981; font-size: 20px; } /* Зеленая для звонка */
+    .fab-option.call { background: #10b981; font-size: 20px; }
     .fab-option.wa { background: #25D366; }
     .fab-option.tg { background: #229ED9; }
     .fab-option.max { background: #8B5CF6; }
