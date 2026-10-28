@@ -197,12 +197,17 @@
         </div>
     </footer>
 
-    <!-- ПЛАВАЮЩАЯ ПАНЕЛЬ МЕССЕНДЖЕРОВ (ТОЛЬКО ДЛЯ ТЕЛЕФОНА) -->
-    <div class="mobile-float-bar">
-        <a href="https://wa.me/79024833907" target="_blank" class="float-btn wa" title="WhatsApp">WA</a>
-        <a href="https://t.me/+79024833907" target="_blank" class="float-btn tg" title="Telegram">TG</a>
-        <a href="https://max.ru/+79024833907" target="_blank" class="float-btn max" title="MAX">MAX</a>
-        <a href="tel:+79024833907" class="float-btn call" title="Позвонить">📞</a>
+    <!-- ПЛАВАЮЩАЯ КНОПКА С МЕНЮ (ТОЛЬКО ДЛЯ ТЕЛЕФОНА) -->
+    <div class="fab-container" id="fabMenu">
+        <div class="fab-options">
+            <a href="https://wa.me/79024833907" target="_blank" class="fab-option wa" title="WhatsApp">WA</a>
+            <a href="https://t.me/+79024833907" target="_blank" class="fab-option tg" title="Telegram">TG</a>
+            <a href="https://max.ru/+79024833907" target="_blank" class="fab-option max" title="MAX">MAX</a>
+        </div>
+        <button class="fab-main" id="fabToggle" aria-label="Связаться с нами">
+            <span class="fab-icon-open">📞</span>
+            <span class="fab-icon-close">✕</span>
+        </button>
     </div>
 
     <script src="js/script.js"></script>
