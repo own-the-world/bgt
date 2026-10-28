@@ -206,3 +206,21 @@ document.querySelectorAll('.wa-preload').forEach(btn => {
         window.open(`https://wa.me/79024833907?text=${text}`, '_blank');
     });
 });
+
+// ==================== ПЛАВАЮЩЕЕ МЕНЮ (FAB) ====================
+const fabMenu = document.getElementById('fabMenu');
+const fabToggle = document.getElementById('fabToggle');
+
+if (fabToggle) {
+    fabToggle.addEventListener('click', (e) => {
+        e.stopPropagation(); // Чтобы клик не уходил на страницу
+        fabMenu.classList.toggle('open');
+    });
+
+    // Закрывать меню при клике в любом другом месте экрана
+    document.addEventListener('click', (e) => {
+        if (fabMenu.classList.contains('open') && !fabMenu.contains(e.target)) {
+            fabMenu.classList.remove('open');
+        }
+    });
+}
