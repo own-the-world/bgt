@@ -7,7 +7,7 @@
     <meta name="description" content="Автоэлектрик во Владивостоке, ул. Волнистая 12. Русификация автомобилей, установка Android-магнитол, масляный и топливный корректор. Тел. 8 902 483-39-07 — WhatsApp, Telegram, MAX.">
     <meta name="keywords" content="автоэлектрик Владивосток, русификация авто Владивосток, андроид в авто, масляный корректор, топливный корректор, Волнистая 12">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://ваш-сайт.ru/">
+    <link rel="canonical" href="https://own-the-world.github.io/bgt/">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Автоэлектрик во Владивостоке — русификация, Android, корректоры">
     <meta property="og:description" content="Русификация авто, Android в машину, масляный и топливный корректор. Владивосток, ул. Волнистая 12. Тел. 8 902 483-39-07.">
@@ -25,15 +25,14 @@
 </head>
 <body>
 
- 
+    <!-- ШАПКА -->
     <header>
-        <div class="top-bar">
+        <!-- ВЕРХНЯЯ ПАНЕЛЬ (ПК) -->
+        <div class="top-bar desktop-header">
             <a href="index.html" class="logo">
-                <img src="https://scontent-fra5-1.cdninstagram.com/v/t51.2885-19/144310169_850224949097944_1448671783067702273_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=110&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy42OTEuQzMifQ%3D%3D&_nc_ohc=pewxaqgNO48Q7kNvwFCTTYa&_nc_oc=AdoaG2ALDzZ9t9V2Vhlu1558ju7Tj4gMJ7JKpYlMDEofJYoeSE9aju5HIyMYi3vbfWGaato6T469IIl4W-G4QvSp&_nc_zt=24&_nc_ht=scontent-fra5-1.cdninstagram.com&_nc_ss=79689&oh=00_AQOFx1gbxI_CkiD1qQV8qx0UNGb4RX3krEXXKqwB9Pvq2w&oe=6AE4D616" alt="" class="logo-img">
+                <img src="images/logo.png" alt="Автоэлектрик Владивосток" class="logo-img">
             </a>
-            
-            <!-- Блок с контактами для ПК (скроем на телефоне) -->
-            <div class="top-contacts desktop-contacts">
+            <div class="top-contacts">
                 <a href="https://2gis.ru/vladivostok/search/Волнистая%2012" target="_blank" rel="noopener">📍 Волнистая, 12</a>
                 <a href="tel:+79024833907" class="phone-btn">📞 8 902 483-39-07</a>
                 <div class="messengers">
@@ -44,20 +43,18 @@
             </div>
         </div>
 
-        <!-- Мобильная панель: логотип слева, иконки справа -->
-        <div class="mobile-top-bar">
+        <!-- МОБИЛЬНАЯ ПАНЕЛЬ (В ОДНУ СТРОКУ) -->
+        <div class="mobile-header">
             <a href="index.html" class="logo">
-                <img src="images/logo.jpg" alt="Автоэлектрик Владивосток" class="logo-img">
+                <img src="images/logo.png" alt="Логотип" class="logo-img">
             </a>
             <div class="mobile-actions">
-                <a href="https://2gis.ru/vladivostok/search/Волнистая%2012" target="_blank" class="icon-btn" title="2ГИС">📍</a>
-                <div class="messengers mobile-messengers">
-
-                </div>
-                <a href="tel:+79024833907" class="icon-btn call-btn" title="Позвонить">📞</a>
+                <a href="https://2gis.ru/vladivostok/search/Волнистая%2012" target="_blank" class="icon-btn">📍</a>
+                <a href="tel:+79024833907" class="icon-btn phone-icon">📞</a>
             </div>
         </div>
 
+        <!-- МЕНЮ -->
         <nav>
             <a href="index.html">Главная</a>
             <a href="russification.html">Русификация</a>
@@ -200,7 +197,14 @@
         </div>
     </footer>
 
-    <a href="tel:+79024833907" class="call-float" title="Позвонить">📞</a>
+    <!-- ПЛАВАЮЩАЯ ПАНЕЛЬ МЕССЕНДЖЕРОВ (ТОЛЬКО ДЛЯ ТЕЛЕФОНА) -->
+    <div class="mobile-float-bar">
+        <a href="https://wa.me/79024833907" target="_blank" class="float-btn wa" title="WhatsApp">WA</a>
+        <a href="https://t.me/+79024833907" target="_blank" class="float-btn tg" title="Telegram">TG</a>
+        <a href="https://max.ru/+79024833907" target="_blank" class="float-btn max" title="MAX">MAX</a>
+        <a href="tel:+79024833907" class="float-btn call" title="Позвонить">📞</a>
+    </div>
+
     <script src="js/script.js"></script>
 </body>
 </html>
