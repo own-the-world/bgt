@@ -292,7 +292,8 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
         display: flex;
         position: fixed;
         bottom: 20px;
-        right: 20px;
+        left: 50%;
+        transform: translateX(-50%);
         z-index: 1000;
         flex-direction: column;
         align-items: flex-end;
