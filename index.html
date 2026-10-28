@@ -8,20 +8,7 @@
     <meta name="keywords" content="автоэлектрик Владивосток, русификация авто Владивосток, андроид в авто, масляный корректор, топливный корректор, Волнистая 12">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://own-the-world.github.io/bgt/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Автоэлектрик во Владивостоке — русификация, Android, корректоры">
-    <meta property="og:description" content="Русификация авто, Android в машину, масляный и топливный корректор. Владивосток, ул. Волнистая 12. Тел. 8 902 483-39-07.">
     <link rel="stylesheet" href="css/style.css">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "AutoRepair",
-      "name": "Автоэлектрик на Волнистой",
-      "telephone": "+79024833907",
-      "address": {"@type": "PostalAddress","streetAddress": "ул. Волнистая, 12","addressLocality": "Владивосток","addressCountry": "RU"},
-      "openingHours": "Mo-Su 09:00-20:00"
-    }
-    </script>
 </head>
 <body>
 
@@ -43,7 +30,7 @@
             </div>
         </div>
 
-        <!-- МОБИЛЬНАЯ ПАНЕЛЬ (В ОДНУ СТРОКУ) -->
+        <!-- МОБИЛЬНАЯ ПАНЕЛЬ -->
         <div class="mobile-header">
             <a href="index.html" class="logo">
                 <img src="images/logo.png" alt="Логотип" class="logo-img">
@@ -56,7 +43,7 @@
 
         <!-- МЕНЮ -->
         <nav>
-            <a href="index.html">Главная</a>
+            <a href="index.html" class="active">Главная</a>
             <a href="russification.html">Русификация</a>
             <a href="android.html">Android в авто</a>
             <a href="corrector.html">Корректоры</a>
@@ -91,81 +78,113 @@
         </div>
     </div>
 
-    <!-- УСЛУГИ -->
-    <section id="services">
+    <!-- УСЛУГИ (СЕТКА КАРТОЧЕК) -->
+    <section id="services" style="background: #1a1a1a; padding: 60px 24px;">
         <div class="container">
-            <h2>Наши услуги</h2>
-            <p class="subtitle">Нажмите на услугу, чтобы узнать подробности</p>
-            <div class="services-list">
-                <div class="service-item">
-                    <div class="service-header">
-                        <div class="icon">🌐</div>
-                        <h3>Русификация автомобилей</h3>
-                        <div class="arrow">▼</div>
-                    </div>
-                    <div class="service-body">
-                        <div class="service-body-inner">
-                            <p>Полностью переведём интерфейс вашего автомобиля на русский язык.</p>
-                            <ul>
-                                <li>Мультимедиа и приборная панель</li>
-                                <li>Навигация и карты РФ</li>
-                                <li>Голосовые подсказки</li>
-                            </ul>
-                            <div class="btn-wrap">
-                                <a href="russification.html" class="btn btn-sm">Подробнее →</a>
-                                <a href="https://wa.me/79024833907" target="_blank" rel="noopener" class="btn btn-sm wa-preload" style="background:#25D366;">💬 WhatsApp</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="service-item">
-                    <div class="service-header">
-                        <div class="icon">📱</div>
-                        <h3>Android в авто</h3>
-                        <div class="arrow">▼</div>
-                    </div>
-                    <div class="service-body">
-                        <div class="service-body-inner">
-                            <p>Заменяем штатную магнитолу на современную Android-систему.</p>
-                            <ul>
-                                <li>Подбор под авто</li>
-                                <li>CarPlay / Android Auto</li>
-                                <li>Навигация и приложения</li>
-                            </ul>
-                            <div class="btn-wrap">
-                                <a href="android.html" class="btn btn-sm">Подробнее →</a>
-                                <a href="https://t.me/+79024833907" target="_blank" rel="noopener" class="btn btn-sm" style="background:#229ED9;">✈️ Telegram</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="service-item">
-                    <div class="service-header">
-                        <div class="icon">⛽</div>
-                        <h3>Масляный и топливный корректор</h3>
-                        <div class="arrow">▼</div>
-                    </div>
-                    <div class="service-body">
-                        <div class="service-body-inner">
-                            <p>Устанавливаем корректоры расхода масла и топлива.</p>
-                            <ul>
-                                <li>Масляный корректор</li>
-                                <li>Топливный корректор</li>
-                                <li>Настройка и диагностика</li>
-                            </ul>
-                            <div class="btn-wrap">
-                                <a href="corrector.html" class="btn btn-sm">Подробнее →</a>
-                                <a href="https://max.ru/+79024833907" target="_blank" rel="noopener" class="btn btn-sm" style="background:#8B5CF6;">М MAX</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <h2 style="color: #fff; text-align: center; font-size: 32px; margin-bottom: 40px;">Услуги, которые мы предоставляем</h2>
+            
+            <div class="services-grid-cards">
+                <!-- 1 -->
+                <a href="russification.html" class="service-card">
+                    <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600');"></div>
+                    <h3>Русификация автомобилей</h3>
+                </a>
+                <!-- 2 -->
+                <a href="#contact-form" class="service-card">
+                    <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600');"></div>
+                    <h3>Навигационно-мультимедийная система на штатный монитор</h3>
+                </a>
+                <!-- 3 -->
+                <a href="#contact-form" class="service-card">
+                    <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600');"></div>
+                    <h3>Установка видеорегистраторов</h3>
+                </a>
+                <!-- 4 -->
+                <a href="#contact-form" class="service-card">
+                    <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600');"></div>
+                    <h3>Установка систем кругового обзора 360 Bird View</h3>
+                </a>
+                <!-- 5 -->
+                <a href="#contact-form" class="service-card">
+                    <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1590362891991-f776e747a588?w=600');"></div>
+                    <h3>Установка системы контроля слепых зон</h3>
+                </a>
+                <!-- 6 -->
+                <a href="#contact-form" class="service-card">
+                    <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1568844293986-8d0400bd4745?w=600');"></div>
+                    <h3>Расширенный CarPlay в любой авто</h3>
+                </a>
+                <!-- 7 -->
+                <a href="#contact-form" class="service-card">
+                    <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=600');"></div>
+                    <h3>Установка и подбор акустических систем</h3>
+                </a>
+                <!-- 8 -->
+                <a href="#contact-form" class="service-card">
+                    <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=600');"></div>
+                    <h3>Подключение дополнительных камер к штатным мониторам</h3>
+                </a>
+                <!-- 9 -->
+                <a href="#contact-form" class="service-card">
+                    <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600');"></div>
+                    <h3>Установка Apple TV на штатный монитор</h3>
+                </a>
+                <!-- 10 -->
+                <a href="#contact-form" class="service-card">
+                    <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600');"></div>
+                    <h3>Установка систем защиты от угона</h3>
+                </a>
+                <!-- 11 -->
+                <a href="#contact-form" class="service-card">
+                    <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1590362891991-f776e747a588?w=600');"></div>
+                    <h3>Автоматические доводчики дверей</h3>
+                </a>
+                <!-- 12 -->
+                <a href="#contact-form" class="service-card">
+                    <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600');"></div>
+                    <h3>Выдвижные электро пороги</h3>
+                </a>
+                <!-- 13 -->
+                <a href="#contact-form" class="service-card">
+                    <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600');"></div>
+                    <h3>Ambient Light — подсветка салона</h3>
+                </a>
+                <!-- 14 -->
+                <a href="#contact-form" class="service-card">
+                    <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1568844293986-8d0400bd4745?w=600');"></div>
+                    <h3>Установка комплексной шумоизоляции</h3>
+                </a>
+                <!-- 15 -->
+                <a href="#contact-form" class="service-card">
+                    <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600');"></div>
+                    <h3>Установка дополнительных мониторов</h3>
+                </a>
+                <!-- 16 -->
+                <a href="#contact-form" class="service-card">
+                    <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1487754180451-c456f719a1fc?w=600');"></div>
+                    <h3>Установка системы «Звёздное небо»</h3>
+                </a>
+                <!-- 17 -->
+                <a href="#contact-form" class="service-card">
+                    <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=600');"></div>
+                    <h3>Мониторы для задних пассажиров</h3>
+                </a>
+                <!-- 18 -->
+                <a href="#contact-form" class="service-card">
+                    <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600');"></div>
+                    <h3>Оригинальное дооснащение BMW</h3>
+                </a>
+                <!-- 19 -->
+                <a href="corrector.html" class="service-card">
+                    <div class="service-card-bg" style="background-image: url('https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=600');"></div>
+                    <h3>Топливный и масляный корректор</h3>
+                </a>
             </div>
         </div>
     </section>
 
     <!-- ФОРМА -->
-    <section style="background:#fff;">
+    <section id="contact-form" style="background:#fff;">
         <div class="container">
             <h2>Оставить заявку</h2>
             <p class="subtitle">Заявка придёт нам в Telegram — ответим быстро</p>
@@ -178,6 +197,7 @@
                         <option value="Русификация автомобилей">Русификация автомобилей</option>
                         <option value="Android в авто">Android в авто</option>
                         <option value="Масляный/топливный корректор">Масляный/топливный корректор</option>
+                        <option value="Другая услуга">Другая услуга</option>
                     </select>
                     <textarea name="message" rows="3" placeholder="Комментарий (необязательно)"></textarea>
                     <button type="submit" class="btn">Отправить заявку</button>
@@ -197,7 +217,7 @@
         </div>
     </footer>
 
-    <!-- ПЛАВАЮЩАЯ КНОПКА С МЕНЮ (ТОЛЬКО ДЛЯ ТЕЛЕФОНА) -->
+    <!-- ПЛАВАЮЩАЯ КНОПКА (ВЕЕР) -->
     <div class="fab-container" id="fabMenu">
         <div class="fab-options">
             <a href="tel:+79024833907" class="fab-option call" title="Позвонить">📞</a>
