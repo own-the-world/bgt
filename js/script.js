@@ -224,3 +224,49 @@ if (fabToggle) {
         }
     });
 }
+
+// ==================== МОБИЛЬНОЕ МЕНЮ (БУРГЕР) ====================
+const burgerToggle = document.getElementById('burgerToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const closeMenu = document.getElementById('closeMenu');
+
+if (burgerToggle && mobileMenu) {
+    burgerToggle.addEventListener('click', () => {
+        mobileMenu.classList.add('open');
+    });
+
+    closeMenu.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+    });
+
+    // Закрытие меню при клике вне его области
+    document.addEventListener('click', (e) => {
+        if (mobileMenu.classList.contains('open') && 
+            !mobileMenu.contains(e.target) && 
+            !burgerToggle.contains(e.target)) {
+            mobileMenu.classList.remove('open');
+        }
+    });
+}
+
+// ==================== КНОПКА "НАВЕРХ" ====================
+const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+if (scrollTopBtn) {
+    // Отслеживаем прокрутку страницы
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) { // Если прокрутили больше 400px
+            scrollTopBtn.classList.add('visible');
+        } else {
+            scrollTopBtn.classList.remove('visible');
+        }
+    });
+
+    // Плавный скролл наверх при клике
+    scrollTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
