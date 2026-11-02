@@ -512,3 +512,12 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
         left: 15px;
     }
 }
+
+.service-card {
+    background-color: transparent !important;
+}
+
+.service-card:hover {
+    background-color: transparent !important;
+    background: transparent !important;
+}
