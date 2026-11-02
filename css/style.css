@@ -187,7 +187,7 @@ section .subtitle { text-align: center; color: #6b7280; margin-bottom: 40px; max
 }
 
 .service-card:hover .service-card-bg { transform: scale(1.1); }
-.service-card:hover::before { background: rgba(0, 0, 0, 0.4); }
+.service-card:hover::before { background: transparent; }
 .service-card:hover h3 { color: #f59e0b; }
 
 /* ===== ФОРМА ===== */
