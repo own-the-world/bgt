@@ -1,9 +1,97 @@
 /* ===== БАЗА ===== */
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Arial, sans-serif; }
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
 html { scroll-behavior: smooth; }
 body { background: #f4f6f8; color: #1f2937; line-height: 1.6; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
+
+/* ===== ШАПКА (HEADER) ===== */
+/* Логотип (картинка) */
+.header-logo .logo-img {
+    max-height: 50px; /* Ограничиваем высоту, чтобы не ломать шапку */
+    width: auto;      /* Ширина подстроится автоматически */
+    display: block;
+}
+
+.site-header {
+    background-color: #1a1a1a; /* Темный фон, как на скриншоте */
+    color: #fff;
+    padding: 20px 24px;
+
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Логотип */
+.header-logo .logo-text {
+    font-size: 32px;
+    font-weight: 900;
+    color: #ef4444; /* Красный цвет логотипа */
+    letter-spacing: 2px;
+    font-style: italic;
+}
+
+/* Адрес */
+.header-address {
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #d1d5db;
+}
+
+/* Контакты */
+.header-contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.header-phone {
+    font-size: 24px;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.header-phone:hover {
+    color: #ef4444;
+}
+
+.header-schedule {
+    font-size: 13px;
+    color: #9ca3af;
+    margin-top: 2px;
+}
+
+/* Адаптив для мобильных устройств */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .header-contacts {
+        align-items: center;
+        text-align: center;
+    }
+    
+    .header-logo .logo-text {
+        font-size: 28px;
+    }
+    
+    .header-phone {
+        font-size: 20px;
+    }
+}
 
 /* ===== СЛАЙДЕР ===== */
 .slider { position: relative; height: 480px; overflow: hidden; }
