@@ -1,46 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // ==================== МОБИЛЬНОЕ МЕНЮ (БУРГЕР) ====================
-    const burgerToggle = document.getElementById('burgerToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const closeMenu = document.getElementById('closeMenu');
-
-    if (burgerToggle && mobileMenu) {
-        burgerToggle.addEventListener('click', () => {
-            mobileMenu.classList.add('open');
-        });
-
-        if (closeMenu) {
-            closeMenu.addEventListener('click', () => {
-                mobileMenu.classList.remove('open');
-            });
-        }
-
-        // Закрытие меню при клике вне его области
-        document.addEventListener('click', (e) => {
-            if (mobileMenu.classList.contains('open') && 
-                !mobileMenu.contains(e.target) && 
-                !burgerToggle.contains(e.target)) {
-                mobileMenu.classList.remove('open');
-            }
-        });
-    }
-
     // ==================== ПЛАВАЮЩЕЕ МЕНЮ (FAB) ====================
     const fabMenu = document.getElementById('fabMenu');
     const fabToggle = document.getElementById('fabToggle');
 
     if (fabToggle && fabMenu) {
+        // Открытие/закрытие по клику на главную кнопку
         fabToggle.addEventListener('click', (e) => {
-            e.stopPropagation(); // Чтобы клик не закрывал меню сразу
+            e.stopPropagation(); 
             fabMenu.classList.toggle('open');
         });
 
-        // Закрываем меню при клике вне его области
+        // Закрытие при клике вне меню
         document.addEventListener('click', (e) => {
             if (fabMenu.classList.contains('open') && !fabMenu.contains(e.target)) {
                 fabMenu.classList.remove('open');
             }
+        });
+
+        // Закрытие при клике на любую кнопку внутри меню (чтобы меню не оставалось висеть после перехода)
+        const fabBtns = fabMenu.querySelectorAll('.fab-btn');
+        fabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                fabMenu.classList.remove('open');
+            });
         });
     }
 
