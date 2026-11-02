@@ -1,65 +1,67 @@
-// ==================== МОБИЛЬНОЕ МЕНЮ (БУРГЕР) ====================
-const burgerToggle = document.getElementById('burgerToggle');
-const mobileMenu = document.getElementById('mobileMenu');
-const closeMenu = document.getElementById('closeMenu');
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // ==================== МОБИЛЬНОЕ МЕНЮ (БУРГЕР) ====================
+    const burgerToggle = document.getElementById('burgerToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
 
-if (burgerToggle && mobileMenu) {
-    burgerToggle.addEventListener('click', () => {
-        mobileMenu.classList.add('open');
-    });
+    if (burgerToggle && mobileMenu) {
+        burgerToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+        });
 
-    if (closeMenu) {
-        closeMenu.addEventListener('click', () => {
-            mobileMenu.classList.remove('open');
+        if (closeMenu) {
+            closeMenu.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+            });
+        }
+
+        // Закрытие меню при клике вне его области
+        document.addEventListener('click', (e) => {
+            if (mobileMenu.classList.contains('open') && 
+                !mobileMenu.contains(e.target) && 
+                !burgerToggle.contains(e.target)) {
+                mobileMenu.classList.remove('open');
+            }
         });
     }
 
-    // Закрытие меню при клике вне его области
-    document.addEventListener('click', (e) => {
-        if (mobileMenu.classList.contains('open') && 
-            !mobileMenu.contains(e.target) && 
-            !burgerToggle.contains(e.target)) {
-            mobileMenu.classList.remove('open');
-        }
-    });
-}
+    // ==================== ПЛАВАЮЩЕЕ МЕНЮ (FAB) ====================
+    const fabMenu = document.getElementById('fabMenu');
+    const fabToggle = document.getElementById('fabToggle');
 
-// ==================== КНОПКА "НАВЕРХ" ====================
-const scrollTopBtn = document.getElementById('scrollTopBtn');
-
-if (scrollTopBtn) {
-    // Отслеживаем прокрутку страницы
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 400) {
-            scrollTopBtn.classList.add('visible');
-        } else {
-            scrollTopBtn.classList.remove('visible');
-        }
-    });
-
-    // Плавный скролл наверх при клике
-    scrollTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
+    if (fabToggle && fabMenu) {
+        fabToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); // Чтобы клик не закрывал меню сразу
+            fabMenu.classList.toggle('open');
         });
-    });
-}
 
-// ==================== ПЛАВАЮЩЕЕ МЕНЮ (FAB) ====================
-const fabMenu = document.getElementById('fabMenu');
-const fabToggle = document.getElementById('fabToggle');
+        // Закрываем меню при клике вне его области
+        document.addEventListener('click', (e) => {
+            if (fabMenu.classList.contains('open') && !fabMenu.contains(e.target)) {
+                fabMenu.classList.remove('open');
+            }
+        });
+    }
 
-if (fabToggle && fabMenu) {
-    fabToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        fabMenu.classList.toggle('open');
-    });
+    // ==================== КНОПКА "НАВЕРХ" ====================
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
 
-    // Закрываем меню при клике вне его области
-    document.addEventListener('click', (e) => {
-        if (fabMenu.classList.contains('open') && !fabMenu.contains(e.target)) {
-            fabMenu.classList.remove('open');
-        }
-    });
-}
+    if (scrollTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+});
