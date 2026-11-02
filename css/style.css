@@ -5,57 +5,6 @@ body { background: #f4f6f8; color: #1f2937; line-height: 1.6; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
 
-/* ===== ШАПКА ===== */
-header {
-    background: #111827; color: #fff;
-    position: sticky; top: 0; z-index: 100;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-
-.logo { display: flex; align-items: center; }
-.logo-img { height: 40px; width: auto; object-fit: contain; }
-
-/* ПК-панель */
-.top-bar {
-    display: flex; justify-content: space-between; align-items: center;
-    gap: 15px; padding: 12px 24px; max-width: 1200px; margin: 0 auto;
-}
-.top-contacts { display: flex; gap: 12px; align-items: center; }
-.top-contacts a { color: #e5e7eb; font-size: 15px; }
-.top-contacts a:hover { color: #f59e0b; }
-.phone-btn {
-    background: #f59e0b; color: #111 !important;
-    padding: 8px 16px; border-radius: 6px; font-weight: 700; white-space: nowrap;
-}
-.phone-btn:hover { background: #d97706; color: #fff !important; }
-
-.messengers { display: flex; gap: 8px; align-items: center; }
-.messengers a {
-    width: 38px; height: 38px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    background: #1f2937; color: #fff; transition: .2s; 
-    font-size: 13px; font-weight: 700;
-}
-.messengers a:hover { transform: scale(1.1); }
-.messengers a.wa { background: #25D366; }
-.messengers a.tg { background: #229ED9; }
-.messengers a.max { background: #8B5CF6; }
-
-/* Мобильная панель */
-.mobile-header { display: none; }
-.mobile-menu { display: none; }
-
-/* Навигация (для ПК) */
-nav {
-    background: #1f2937; display: flex; gap: 6px; padding: 0 24px;
-    max-width: 1200px; margin: 0 auto; overflow-x: auto;
-}
-nav a {
-    color: #d1d5db; padding: 14px 16px; font-size: 15px; font-weight: 500; white-space: nowrap;
-    border-bottom: 3px solid transparent; transition: .2s;
-}
-nav a:hover, nav a.active { color: #f59e0b; border-bottom-color: #f59e0b; }
-
 /* ===== СЛАЙДЕР ===== */
 .slider { position: relative; height: 480px; overflow: hidden; }
 .slide {
@@ -152,10 +101,37 @@ footer .footer-messengers { margin-top: 12px; display: flex; gap: 12px; justify-
 footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6px; color: #e5e7eb; font-size: 14px; }
 
 /* =======================================================
-   ПЛАВАЮЩИЕ КНОПКИ (FAB И НАВЕРХ) — СТИЛЬ BGT
+   ПЛАВАЮЩИЕ КНОПКИ (FAB И НАВЕРХ)
    ======================================================= */
 
-/* Общие стили для кнопок */
+.fab-wrapper {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fab-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 15px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fab-wrapper.open .fab-actions {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Общие стили для всех круглых кнопок */
 .fab-toggle, .fab-btn, .scroll-top-btn {
     width: 56px;
     height: 56px;
@@ -179,42 +155,8 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
 }
 
-/* Контейнер FAB (правый нижний угол) */
-.fab-wrapper {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 9999;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    pointer-events: none;
-}
-
-/* Список кнопок (выезжающая панель) */
-.fab-actions {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 15px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    pointer-events: none;
-}
-
-/* Открытое состояние */
-.fab-wrapper.open .fab-actions {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
 /* Главная кнопка */
 .fab-toggle {
-    pointer-events: auto;
     position: relative;
 }
 
@@ -229,7 +171,7 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
 .fab-wrapper.open .fab-toggle .icon-open { opacity: 0; transform: rotate(90deg); }
 .fab-wrapper.open .fab-toggle .icon-close { opacity: 1; transform: rotate(0); }
 
-/* Кнопка "Наверх" (левый нижний угол) */
+/* Кнопка "Наверх" */
 .scroll-top-btn {
     position: fixed;
     bottom: 20px;
@@ -246,58 +188,12 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
    АДАПТИВ (Мобильная версия)
    ======================================================= */
 @media (max-width: 768px) {
-    /* Скрываем ПК-элементы */
-    .desktop-header, nav { display: none !important; }
-    
-    /* Мобильная шапка */
-    .mobile-header {
-        display: flex; justify-content: space-between; align-items: center;
-        padding: 10px 16px; max-width: 100%;
-    }
-    .mobile-actions { display: flex; align-items: center; gap: 12px; }
-    .icon-btn { font-size: 22px; text-decoration: none; color: #fff; }
-    .phone-icon { background: #f59e0b; color: #111; padding: 8px 10px; border-radius: 50%; line-height: 1; }
-    .logo-img { height: 35px; }
-
-    /* Бургер */
-    .burger-btn {
-        display: flex; flex-direction: column; gap: 5px;
-        background: none; border: none; cursor: pointer; margin-left: 10px;
-    }
-    .burger-btn span { display: block; width: 25px; height: 3px; background: #fff; border-radius: 3px; }
-
-    /* Выдвижное меню СПРАВА */
-    .mobile-menu {
-        display: flex; flex-direction: column;
-        position: fixed; top: 0; right: -100%;
-        width: 80%; max-width: 300px; height: 100vh;
-        background: #111827; z-index: 2000;
-        transition: 0.3s ease;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.5);
-    }
-    .mobile-menu.open { right: 0; }
-    
-    .mobile-menu-header {
-        display: flex; justify-content: space-between; align-items: center;
-        padding: 20px; border-bottom: 1px solid #374151; color: #fff; font-size: 18px; font-weight: 700;
-    }
-    .close-menu { background: none; border: none; color: #f59e0b; font-size: 24px; cursor: pointer; }
-    .mobile-menu-list { list-style: none; padding: 20px; }
-    .mobile-menu-list li { margin-bottom: 15px; }
-    .mobile-menu-list a {
-        color: #d1d5db; font-size: 18px; text-decoration: none;
-        display: block; padding: 10px 0; border-bottom: 1px solid #1f2937;
-    }
-    .mobile-menu-list a.active { color: #f59e0b; }
-
-    /* Остальной адаптив */
     section { padding: 40px 16px; }
     .slider { height: 400px; }
     .slide-content h2 { font-size: 26px; }
     .slide-content p { font-size: 16px; }
     .services-grid-cards { grid-template-columns: 1fr; }
 
-    /* Плавающие кнопки */
     .fab-wrapper {
         bottom: 15px;
         right: 15px;
