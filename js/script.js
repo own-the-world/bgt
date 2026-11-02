@@ -8,9 +8,11 @@ if (burgerToggle && mobileMenu) {
         mobileMenu.classList.add('open');
     });
 
-    closeMenu.addEventListener('click', () => {
-        mobileMenu.classList.remove('open');
-    });
+    if (closeMenu) {
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+        });
+    }
 
     // Закрытие меню при клике вне его области
     document.addEventListener('click', (e) => {
@@ -48,12 +50,13 @@ if (scrollTopBtn) {
 const fabMenu = document.getElementById('fabMenu');
 const fabToggle = document.getElementById('fabToggle');
 
-if (fabToggle) {
+if (fabToggle && fabMenu) {
     fabToggle.addEventListener('click', (e) => {
         e.stopPropagation();
         fabMenu.classList.toggle('open');
     });
 
+    // Закрываем меню при клике вне его области
     document.addEventListener('click', (e) => {
         if (fabMenu.classList.contains('open') && !fabMenu.contains(e.target)) {
             fabMenu.classList.remove('open');
