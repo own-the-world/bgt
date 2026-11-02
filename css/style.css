@@ -171,6 +171,20 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
 .fab-wrapper.open .fab-toggle .icon-open { opacity: 0; transform: rotate(90deg); }
 .fab-wrapper.open .fab-toggle .icon-close { opacity: 1; transform: rotate(0); }
 
+/* ===== ПРОЗРАЧНЫЕ КНОПКИ МЕССЕНДЖЕРОВ ===== */
+.fab-btn {
+    background: transparent !important; /* Прозрачный фон */
+    border: 2px solid #ef4444; /* Красная обводка */
+    box-shadow: none !important; /* Убираем тень */
+    color: #ef4444; /* Красные иконки */
+}
+
+.fab-btn:hover {
+    background: #ef4444 !important; /* Заливаем красным при наведении */
+    color: #fff !important; /* Белые иконки при наведении */
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4) !important;
+}
+
 /* Кнопка "Наверх" */
 .scroll-top-btn {
     position: fixed;
@@ -185,35 +199,17 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
 }
 
 /* =======================================================
-   АДАПТИВ (Мобильная версия)
+   ПЛАВАЮЩИЙ БУРГЕР (ВЕРХНИЙ ПРАВЫЙ УГОЛ)
    ======================================================= */
-@media (max-width: 768px) {
-    section { padding: 40px 16px; }
-    .slider { height: 400px; }
-    .slide-content h2 { font-size: 26px; }
-    .slide-content p { font-size: 16px; }
-    .services-grid-cards { grid-template-columns: 1fr; }
-
-    .fab-wrapper {
-        bottom: 15px;
-        right: 15px;
-    }
-    .scroll-top-btn {
-        bottom: 15px;
-        left: 15px;
-    }
-}
-
-/* ===== ПЛАВАЮЩИЙ БУРГЕР ===== */
 .floating-burger {
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 10000; /* Поверх всего */
-    width: 56px;    /* Сделал ширину как у остальных кнопок */
-    height: 56px;   /* Сделал высоту как у остальных кнопок */
+    z-index: 10001; /* Выше оверлея */
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
-    background: #ef4444; /* ТОТ САМЫЙ КРАСНЫЙ ЦВЕТ */
+    background: #ef4444;
     border: none;
     display: flex;
     flex-direction: column;
@@ -221,7 +217,7 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     align-items: center;
     gap: 5px;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4); /* Такая же тень */
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
     transition: all 0.2s ease;
 }
 
@@ -234,22 +230,24 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
 }
 
 .floating-burger:hover {
-    background: #dc2626; /* Цвет при наведении */
+    background: #dc2626;
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
 }
 
-/* Анимация в крестик при открытом меню */
+/* Анимация в крестик */
 .floating-burger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .floating-burger.active span:nth-child(2) { opacity: 0; }
 .floating-burger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* ===== ВЫЕЗЖАЮЩЕЕ МЕНЮ ===== */
+/* =======================================================
+   ВЫЕЗЖАЮЩЕЕ МЕНЮ (БУРГЕР)
+   ======================================================= */
 .burger-menu-overlay {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
-    z-index: 9999;
+    z-index: 10000; /* Ниже кнопки (10001) */
     opacity: 0;
     visibility: hidden;
     transition: 0.3s ease;
@@ -267,8 +265,8 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     width: 100%;
     max-width: 320px;
     height: 100%;
-    background: #0f0f0f; /* Темный фон как на скриншоте */
-    padding: 70px 20px 30px;
+    background: #0f0f0f;
+    padding: 30px 20px;
     transform: translateX(100%);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     overflow-y: auto;
@@ -279,27 +277,6 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     transform: translateX(0);
 }
 
-.burger-close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: transparent;
-    border: none;
-    color: #fff;
-    font-size: 24px;
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: 0.2s;
-}
-
-.burger-close:hover {
-    color: #f59e0b;
-}
-
 .burger-nav-list {
     list-style: none;
     padding: 0;
@@ -307,6 +284,7 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     display: flex;
     flex-direction: column;
     gap: 15px;
+    margin-top: 40px;
 }
 
 .burger-nav-list li a {
@@ -321,17 +299,19 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
 
 .burger-nav-list li a:hover,
 .burger-nav-list li a.active {
-    color: #ef4444; /* Красный цвет как на скриншоте для активного пункта */
+    color: #ef4444;
     padding-left: 5px;
 }
 
 /* Стили для адреса */
 .burger-address-item a {
-    color: #f59e0b; /* Выделяем адрес желтым */
+    color: #f59e0b;
     font-weight: 600;
 }
 
-/* ===== МОДАЛКА ДЛЯ ВЫБОРА КАРТ ===== */
+/* =======================================================
+   МОДАЛКА ДЛЯ ВЫБОРА КАРТ
+   ======================================================= */
 .map-modal-overlay {
     position: fixed;
     inset: 0;
@@ -388,4 +368,24 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     border: none;
     cursor: pointer;
     font-family: inherit;
+}
+
+/* =======================================================
+   АДАПТИВ (Мобильная версия)
+   ======================================================= */
+@media (max-width: 768px) {
+    section { padding: 40px 16px; }
+    .slider { height: 400px; }
+    .slide-content h2 { font-size: 26px; }
+    .slide-content p { font-size: 16px; }
+    .services-grid-cards { grid-template-columns: 1fr; }
+
+    .fab-wrapper {
+        bottom: 15px;
+        right: 15px;
+    }
+    .scroll-top-btn {
+        bottom: 15px;
+        left: 15px;
+    }
 }
