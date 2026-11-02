@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // ==================== ПЛАВАЮЩЕЕ МЕНЮ (FAB) ====================
+    // ==================== 1. ПЛАВАЮЩЕЕ МЕНЮ СВЯЗИ (FAB ВНИЗУ СПРАВА) ====================
     const fabMenu = document.getElementById('fabMenu');
     const fabToggle = document.getElementById('fabToggle');
 
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Закрытие при клике на любую кнопку внутри меню (чтобы меню не оставалось висеть после перехода)
+        // Закрытие при клике на любую кнопку внутри меню
         const fabBtns = fabMenu.querySelectorAll('.fab-btn');
         fabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ==================== КНОПКА "НАВЕРХ" ====================
+    // ==================== 2. КНОПКА "НАВЕРХ" ====================
     const scrollTopBtn = document.getElementById('scrollTopBtn');
 
     if (scrollTopBtn) {
@@ -44,6 +44,91 @@ document.addEventListener('DOMContentLoaded', () => {
                 top: 0,
                 behavior: 'smooth'
             });
+        });
+    }
+
+    // ==================== 3. ВЕРХНИЙ БУРГЕР И МЕНЮ ====================
+    const burgerToggle = document.getElementById('burgerToggle');
+    const burgerOverlay = document.getElementById('burgerOverlay');
+    const burgerClose = document.getElementById('burgerClose');
+    const addressLink = document.getElementById('addressLink');
+
+    if (burgerToggle && burgerOverlay) {
+        // Открыть меню
+        burgerToggle.addEventListener('click', () => {
+            burgerOverlay.classList.add('open');
+            burgerToggle.classList.add('active');
+        });
+
+        // Закрыть по крестику
+        burgerClose.addEventListener('click', () => {
+            burgerOverlay.classList.remove('open');
+            burgerToggle.classList.remove('active');
+        });
+
+        // Закрыть по клику на оверлей (вне панели)
+        burgerOverlay.addEventListener('click', (e) => {
+            if (e.target === burgerOverlay) {
+                burgerOverlay.classList.remove('open');
+                burgerToggle.classList.remove('active');
+            }
+        });
+
+        // Закрыть при клике на любую ссылку в меню
+        const navLinks = burgerOverlay.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                burgerOverlay.classList.remove('open');
+                burgerToggle.classList.remove('active');
+            });
+        });
+    }
+
+    // ==================== 4. ВЫБОР КАРТ ДЛЯ АДРЕСА ====================
+    if (addressLink) {
+        // Создаем модалку динамически, чтобы не загромождать HTML
+        const mapModalHtml = `
+            <div class="map-modal-overlay" id="mapModal">
+                <div class="map-modal-content">
+                    <h3>Открыть адрес в:</h3>
+                    <div class="map-buttons">
+                        <a href="https://yandex.ru/maps/?text=Владивосток,%20улица%20Волнистая,%2012" target="_blank" rel="noopener" class="map-btn">Яндекс Карты</a>
+                        <a href="https://2gis.ru/vladivostok/search/Волнистая%2012" target="_blank" rel="noopener" class="map-btn">2ГИС</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=Владивосток,+улица+Волнистая,+12" target="_blank" rel="noopener" class="map-btn">Google Карты</a>
+                        <button class="map-btn close-map" id="closeMapBtn">Отмена</button>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.insertAdjacentHTML('beforeend', mapModalHtml);
+
+        const mapModal = document.getElementById('mapModal');
+        const closeMapBtn = document.getElementById('closeMapBtn');
+
+        // Открытие модалки при клике на адрес
+        addressLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Отменяем стандартный переход по ссылке
+            
+            // Принудительно закрываем бургер меню перед показом карт
+            if (burgerOverlay) {
+                burgerOverlay.classList.remove('open');
+                burgerToggle.classList.remove('active');
+            }
+            
+            // Открываем модалку карт
+            mapModal.classList.add('open');
+        });
+
+        // Закрытие модалки по кнопке "Отмена"
+        closeMapBtn.addEventListener('click', () => {
+            mapModal.classList.remove('open');
+        });
+
+        // Закрытие по клику на темный фон модалки
+        mapModal.addEventListener('click', (e) => {
+            if (e.target === mapModal) {
+                mapModal.classList.remove('open');
+            }
         });
     }
 
