@@ -272,3 +272,147 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     .fab-option.tg { background: #229ED9; }
     .fab-option.max { background: #8B5CF6; }
 }
+
+/* ===== КНОПКА НАВЕРХ ===== */
+.scroll-top-btn {
+    display: none;
+    position: fixed;
+    bottom: 100px; /* Чтобы не перекрывалась с плавающей кнопкой связи */
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #ef4444; /* Красная, как у BGT */
+    color: #fff;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+    transition: 0.3s ease;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-top-btn.visible {
+    display: flex; /* Показываем, когда JS добавит класс */
+}
+
+.scroll-top-btn:hover {
+    background: #dc2626;
+    transform: translateY(-3px);
+}
+
+/* =======================================================
+   АДАПТИВ (Мобильная версия)
+   ======================================================= */
+@media (max-width: 768px) {
+    /* ... (Оставляем ваши предыдущие стили для логотипа, телефона, услуг) ... */
+    
+    /* Скрываем ПК-меню */
+    .desktop-header { display: none !important; }
+    
+    /* Показываем мобильную шапку */
+    .mobile-header {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 10px 16px; max-width: 100%;
+    }
+    
+    /* Бургер-кнопка */
+    .burger-btn {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+    .burger-btn span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background: #fff;
+        border-radius: 3px;
+        transition: 0.3s;
+    }
+
+    /* Само выезжающее меню (шторка) */
+    .mobile-menu {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Изначально спрятано слева */
+        width: 80%;
+        max-width: 300px;
+        height: 100vh;
+        background: #111827;
+        z-index: 2000;
+        transition: 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+    }
+    
+    .mobile-menu.open {
+        left: 0; /* Выезжает */
+    }
+
+    .mobile-menu-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid #374151;
+        color: #fff;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    .close-menu {
+        background: none;
+        border: none;
+        color: #f59e0b;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .mobile-menu-list {
+        list-style: none;
+        padding: 20px;
+    }
+    
+    .mobile-menu-list li {
+        margin-bottom: 15px;
+    }
+
+    .mobile-menu-list a {
+        color: #d1d5db;
+        font-size: 18px;
+        text-decoration: none;
+        display: block;
+        padding: 10px 0;
+        border-bottom: 1px solid #1f2937;
+    }
+
+    .mobile-menu-list a.active {
+        color: #f59e0b;
+    }
+
+    /* Навигацию (которая была горизонтальной) скрываем на телефоне */
+    nav { display: none; }
+
+    /* ===== ПЛАВАЮЩАЯ КНОПКА (СПРАВА, КАК БЫЛО) ===== */
+    .fab-container {
+        display: flex;
+        position: fixed;
+        bottom: 20px;
+        right: 20px; /* Справа! */
+        z-index: 1000;
+        flex-direction: column;
+        align-items: flex-end; /* Выравниваем по правому краю */
+        pointer-events: none;
+    }
+    
+    .fab-main { pointer-events: auto; }
+    .fab-options { pointer-events: auto; }
+}
