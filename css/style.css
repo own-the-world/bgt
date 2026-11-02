@@ -502,7 +502,22 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     .slider { height: 400px; }
     .slide-content h2 { font-size: 26px; }
     .slide-content p { font-size: 16px; }
-    .services-grid-cards { grid-template-columns: 1fr; }
+    
+    /* --- ИЗМЕНЕНИЯ ДЛЯ КАРТОЧЕК --- */
+    .services-grid-cards { 
+        grid-template-columns: repeat(2, 1fr); /* Две колонки на телефоне */
+        gap: 10px; 
+    }
+    
+    .service-card {
+        height: 140px; /* Карточки стали ниже */
+        padding: 10px;
+    }
+
+    .service-card h3 {
+        font-size: 14px; /* Текст стал меньше */
+    }
+    /* ------------------------------- */
 
     .fab-wrapper {
         bottom: 15px;
