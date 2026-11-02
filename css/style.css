@@ -152,112 +152,95 @@ footer .footer-messengers { margin-top: 12px; display: flex; gap: 12px; justify-
 footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6px; color: #e5e7eb; font-size: 14px; }
 
 /* =======================================================
-   ПЛАВАЮЩИЕ КНОПКИ (FAB И НАВЕРХ)
+   ПЛАВАЮЩИЕ КНОПКИ (FAB И НАВЕРХ) — СТИЛЬ BGT
    ======================================================= */
 
-/* Контейнер FAB — правый нижний угол, кнопки по центру */
-.fab-container {
+/* Общие стили для кнопок */
+.fab-toggle, .fab-btn, .scroll-top-btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #ef4444; /* Красный цвет */
+    color: #fff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+.fab-toggle:hover, .fab-btn:hover, .scroll-top-btn:hover {
+    background: #dc2626;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
+}
+
+/* Контейнер FAB (правый нижний угол) */
+.fab-wrapper {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 1000;
+    z-index: 9999;
     display: flex;
     flex-direction: column;
     align-items: center;
     pointer-events: none;
 }
 
-/* Пункты меню (мессенджеры + звонок) */
-.fab-options {
+/* Список кнопок (выезжающая панель) */
+.fab-actions {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 12px;
     margin-bottom: 15px;
     opacity: 0;
-    pointer-events: none;
+    visibility: hidden;
     transform: translateY(20px);
-    transition: 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
 }
 
-.fab-container.open .fab-options {
+/* Открытое состояние */
+.fab-wrapper.open .fab-actions {
     opacity: 1;
-    pointer-events: auto;
+    visibility: visible;
     transform: translateY(0);
-}
-
-.fab-option {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #ef4444;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 13px;
-    font-weight: 700;
-    text-decoration: none;
-    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
-    transition: 0.2s;
     pointer-events: auto;
 }
 
-.fab-option:hover {
-    background: #dc2626;
-    transform: scale(1.08);
-}
-
-/* Главная кнопка открытия/закрытия */
-.fab-main {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #ef4444;
-    color: #fff;
-    border: none;
-    font-size: 26px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
-    cursor: pointer;
-    transition: 0.3s ease;
+/* Главная кнопка */
+.fab-toggle {
     pointer-events: auto;
-    z-index: 2;
+    position: relative;
 }
 
-.fab-main:hover { background: #dc2626; }
-.fab-main:active { transform: scale(0.95); }
+.fab-toggle svg {
+    position: absolute;
+    transition: all 0.3s ease;
+}
 
-.fab-icon-close { display: none; font-size: 24px; }
-.fab-container.open .fab-icon-open { display: none; }
-.fab-container.open .fab-icon-close { display: block; }
-.fab-container.open .fab-main { transform: rotate(90deg); background: #dc2626; }
+.fab-toggle .icon-close { opacity: 0; transform: rotate(-90deg); }
+.fab-toggle .icon-open { opacity: 1; transform: rotate(0); }
 
-/* Кнопка "Наверх" — слева внизу, тот же размер и цвет */
+.fab-wrapper.open .fab-toggle .icon-open { opacity: 0; transform: rotate(90deg); }
+.fab-wrapper.open .fab-toggle .icon-close { opacity: 1; transform: rotate(0); }
+
+/* Кнопка "Наверх" (левый нижний угол) */
 .scroll-top-btn {
-    display: none;
     position: fixed;
     bottom: 20px;
     left: 20px;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #ef4444;
-    color: #fff;
-    border: none;
-    font-size: 26px;
-    cursor: pointer;
-    z-index: 999;
-    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
-    transition: 0.3s ease;
-    align-items: center;
-    justify-content: center;
+    z-index: 9998;
+    display: none;
 }
 
-.scroll-top-btn.visible { display: flex; }
-.scroll-top-btn:hover { background: #dc2626; transform: translateY(-3px); }
+.scroll-top-btn.visible {
+    display: flex;
+}
 
 /* =======================================================
    АДАПТИВ (Мобильная версия)
@@ -314,20 +297,12 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     .slide-content p { font-size: 16px; }
     .services-grid-cards { grid-template-columns: 1fr; }
 
-    /* Плавающие кнопки — чуть меньше на мобильных */
-    .fab-container {
+    /* Плавающие кнопки */
+    .fab-wrapper {
         bottom: 15px;
         right: 15px;
     }
-    .fab-main, .fab-option {
-        width: 55px;
-        height: 55px;
-        font-size: 22px;
-    }
     .scroll-top-btn {
-        width: 55px;
-        height: 55px;
-        font-size: 22px;
         bottom: 15px;
         left: 15px;
     }
