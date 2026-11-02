@@ -38,17 +38,29 @@
             <div class="mobile-actions">
                 <a href="https://2gis.ru/vladivostok/search/Волнистая%2012" target="_blank" class="icon-btn">📍</a>
                 <a href="tel:+79024833907" class="icon-btn phone-icon">📞</a>
+                <!-- Кнопка бургер-меню -->
+                <button class="burger-btn" id="burgerToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </div>
 
-        <!-- МЕНЮ -->
-        <nav>
-            <a href="index.html" class="active">Главная</a>
-            <a href="russification.html">Русификация</a>
-            <a href="android.html">Android в авто</a>
-            <a href="corrector.html">Корректоры</a>
-            <a href="contacts.html">Контакты</a>
-        </nav>
+        <!-- ВЫЕЗЖАЮЩЕЕ МЕНЮ (MOBILE) -->
+        <div class="mobile-menu" id="mobileMenu">
+            <div class="mobile-menu-header">
+                <span>Меню</span>
+                <button class="close-menu" id="closeMenu">✕</button>
+            </div>
+            <ul class="mobile-menu-list">
+                <li><a href="index.html" class="active">Главная</a></li>
+                <li><a href="russification.html">Русификация</a></li>
+                <li><a href="android.html">Android в авто</a></li>
+                <li><a href="corrector.html">Корректоры</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </div>
     </header>
 
     <!-- СЛАЙДЕР -->
@@ -216,6 +228,9 @@
             <a href="https://max.ru/+79024833907" target="_blank" rel="noopener">М MAX</a>
         </div>
     </footer>
+
+        <!-- КНОПКА "НАВЕРХ" -->
+    <button class="scroll-top-btn" id="scrollTopBtn" title="Наверх">↑</button>
 
     <!-- ПЛАВАЮЩАЯ КНОПКА (ВЕЕР) -->
     <div class="fab-container" id="fabMenu">
