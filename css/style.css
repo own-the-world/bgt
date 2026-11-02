@@ -273,12 +273,13 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     .fab-option.max { background: #8B5CF6; }
 }
 
+
 /* ===== КНОПКА НАВЕРХ ===== */
 .scroll-top-btn {
     display: none;
     position: fixed;
     bottom: 100px; /* Чтобы не перекрывалась с плавающей кнопкой связи */
-    right: 20px;
+    left: 20px;    /* Изменили right на left */
     width: 45px;
     height: 45px;
     border-radius: 50%;
@@ -341,7 +342,7 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     .mobile-menu {
         position: fixed;
         top: 0;
-        left: -100%; /* Изначально спрятано слева */
+        right: -100%; /* Изначально спрятано справа */
         width: 80%;
         max-width: 300px;
         height: 100vh;
