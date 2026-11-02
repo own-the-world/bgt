@@ -457,7 +457,7 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
 
     /* Карточки услуг (в 2 колонки) */
     .services-grid-cards { 
-        grid-template-columns: repeat(2, 1fr); /* Две колонки */
+        grid-template-columns: repeat(1, 1fr); /* Две колонки */
         gap: 10px; 
     }
     
