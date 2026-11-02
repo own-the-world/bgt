@@ -86,14 +86,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ==================== 4. ВЫБОР КАРТ ДЛЯ АДРЕСА ====================
     if (addressLink) {
-        // Создаем модалку динамически, чтобы не загромождать HTML
+        // Создаем модалку динамически
+        // ССЫЛКА НА 2ГИС ОБНОВЛЕНА НА ВАШУ ТОЧНУЮ
         const mapModalHtml = `
             <div class="map-modal-overlay" id="mapModal">
                 <div class="map-modal-content">
                     <h3>Открыть адрес в:</h3>
                     <div class="map-buttons">
                         <a href="https://yandex.ru/maps/?text=Владивосток,%20улица%20Волнистая,%2012" target="_blank" rel="noopener" class="map-btn">Яндекс Карты</a>
-                        <a href="https://2gis.ru/vladivostok/search/Волнистая%2012" target="_blank" rel="noopener" class="map-btn">2ГИС</a>
+                        <a href="https://2gis.ru/vladivostok/geo/70030076984894836/131.944335%2C43.156838?m=131.945686%2C43.15699%2F16.78&immersive=on" target="_blank" rel="noopener" class="map-btn">2ГИС</a>
                         <a href="https://www.google.com/maps/search/?api=1&query=Владивосток,+улица+Волнистая,+12" target="_blank" rel="noopener" class="map-btn">Google Карты</a>
                         <button class="map-btn close-map" id="closeMapBtn">Отмена</button>
                     </div>
@@ -107,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Открытие модалки при клике на адрес
         addressLink.addEventListener('click', (e) => {
-            e.preventDefault(); // Отменяем стандартный переход по ссылке
+            e.preventDefault(); // Отменяем стандартный переход
             
             // Принудительно закрываем бургер меню перед показом карт
             if (burgerOverlay) {
