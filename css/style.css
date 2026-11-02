@@ -157,6 +157,7 @@ section .subtitle { text-align: center; color: #6b7280; margin-bottom: 40px; max
     text-decoration: none;
     cursor: pointer;
     transition: 0.3s ease;
+    background: transparent;
 }
 
 .service-card-bg {
@@ -513,11 +514,3 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     }
 }
 
-.service-card {
-    background-color: transparent !important;
-}
-
-.service-card:hover {
-    background-color: transparent !important;
-    background: transparent !important;
-}
