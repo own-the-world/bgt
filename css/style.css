@@ -171,7 +171,7 @@ section .subtitle { text-align: center; color: #6b7280; margin-bottom: 40px; max
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0);
     z-index: 1;
     transition: 0.3s ease;
 }
