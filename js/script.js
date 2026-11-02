@@ -5,20 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const fabToggle = document.getElementById('fabToggle');
 
     if (fabToggle && fabMenu) {
-        // Открытие/закрытие по клику на главную кнопку
         fabToggle.addEventListener('click', (e) => {
             e.stopPropagation(); 
             fabMenu.classList.toggle('open');
         });
 
-        // Закрытие при клике вне меню
         document.addEventListener('click', (e) => {
             if (fabMenu.classList.contains('open') && !fabMenu.contains(e.target)) {
                 fabMenu.classList.remove('open');
             }
         });
 
-        // Закрытие при клике на любую кнопку внутри меню
         const fabBtns = fabMenu.querySelectorAll('.fab-btn');
         fabBtns.forEach(btn => {
             btn.addEventListener('click', () => {
@@ -40,33 +37,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 
     // ==================== 3. ВЕРХНИЙ БУРГЕР И МЕНЮ ====================
     const burgerToggle = document.getElementById('burgerToggle');
     const burgerOverlay = document.getElementById('burgerOverlay');
-    const burgerClose = document.getElementById('burgerClose');
     const addressLink = document.getElementById('addressLink');
 
     if (burgerToggle && burgerOverlay) {
-        // Открыть меню
+        // Открытие/закрытие по клику на бургер
         burgerToggle.addEventListener('click', () => {
-            burgerOverlay.classList.add('open');
-            burgerToggle.classList.add('active');
+            burgerOverlay.classList.toggle('open');
+            burgerToggle.classList.toggle('active');
         });
 
-        // Закрыть по крестику
-        burgerClose.addEventListener('click', () => {
-            burgerOverlay.classList.remove('open');
-            burgerToggle.classList.remove('active');
-        });
-
-        // Закрыть по клику на оверлей (вне панели)
+        // Закрытие по клику на оверлей (вне панели)
         burgerOverlay.addEventListener('click', (e) => {
             if (e.target === burgerOverlay) {
                 burgerOverlay.classList.remove('open');
@@ -74,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Закрыть при клике на любую ссылку в меню
+        // Закрытие при клике на любую ссылку в меню
         const navLinks = burgerOverlay.querySelectorAll('a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -86,8 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ==================== 4. ВЫБОР КАРТ ДЛЯ АДРЕСА ====================
     if (addressLink) {
-        // Создаем модалку динамически
-        // ССЫЛКА НА 2ГИС ОБНОВЛЕНА НА ВАШУ ТОЧНУЮ
         const mapModalHtml = `
             <div class="map-modal-overlay" id="mapModal">
                 <div class="map-modal-content">
@@ -106,31 +91,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const mapModal = document.getElementById('mapModal');
         const closeMapBtn = document.getElementById('closeMapBtn');
 
-        // Открытие модалки при клике на адрес
         addressLink.addEventListener('click', (e) => {
-            e.preventDefault(); // Отменяем стандартный переход
-            
-            // Принудительно закрываем бургер меню перед показом карт
+            e.preventDefault(); 
             if (burgerOverlay) {
                 burgerOverlay.classList.remove('open');
                 burgerToggle.classList.remove('active');
             }
-            
-            // Открываем модалку карт
             mapModal.classList.add('open');
         });
 
-        // Закрытие модалки по кнопке "Отмена"
         closeMapBtn.addEventListener('click', () => {
             mapModal.classList.remove('open');
         });
 
-        // Закрытие по клику на темный фон модалки
         mapModal.addEventListener('click', (e) => {
             if (e.target === mapModal) {
                 mapModal.classList.remove('open');
             }
         });
     }
-
 });
