@@ -210,31 +210,33 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     top: 20px;
     right: 20px;
     z-index: 10000; /* Поверх всего */
-    width: 50px;
-    height: 50px;
+    width: 56px;    /* Сделал ширину как у остальных кнопок */
+    height: 56px;   /* Сделал высоту как у остальных кнопок */
     border-radius: 50%;
-    background: #1a1a1a; /* Темный фон, как на скрине */
-    border: 2px solid #333;
+    background: #ef4444; /* ТОТ САМЫЙ КРАСНЫЙ ЦВЕТ */
+    border: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 5px;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    transition: 0.3s ease;
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4); /* Такая же тень */
+    transition: all 0.2s ease;
 }
 
 .floating-burger span {
     display: block;
-    width: 22px;
+    width: 24px;
     height: 2px;
     background: #fff;
     transition: 0.3s ease;
 }
 
 .floating-burger:hover {
-    background: #333;
+    background: #dc2626; /* Цвет при наведении */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
 }
 
 /* Анимация в крестик при открытом меню */
