@@ -562,3 +562,27 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
         gap: 20px;
     }
 }
+
+/* =========================================
+   Стили для фотокарточек в галерее
+   ========================================= */
+
+.photo-card .play-icon {
+    background: rgba(0, 0, 0, 0.6); /* Темный полупрозрачный фон */
+    font-size: 26px; /* Размер иконки лупы */
+    padding-left: 0; /* Убираем отступ, который был для треугольника Play */
+    transition: background 0.2s, transform 0.2s;
+}
+
+.photo-card:hover .play-icon {
+    background: rgba(0, 0, 0, 0.85); /* Затемняем при наведении */
+    transform: translate(-50%, -50%) scale(1.1); /* Легкое увеличение */
+}
+
+/* Если картинка не 16:9 (как видео), мы можем её немного "поджать", 
+   чтобы она не искажала сетку. object-fit: cover уже прописан, 
+   но на всякий случай для фото можно сделать чуть иначе: */
+.photo-card .video-thumb img {
+    aspect-ratio: 4 / 3; /* Или оставьте 16/9, как у видео */
+    object-fit: cover;
+}
