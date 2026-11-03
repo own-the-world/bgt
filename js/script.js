@@ -110,4 +110,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // ==================== 5. ВИДЕОГАЛЕРЕЯ (GLIGHTBOX) ====================
+    if (typeof GLightbox !== 'undefined') {
+        const lightbox = GLightbox({
+            selector: '.glightbox',
+            touchNavigation: true,
+            loop: true,
+            autoplayVideos: true,
+            plyr: {
+                config: {
+                    ratio: '16:9',
+                    hideControls: false,
+                    youtube: {
+                        noCookie: true,
+                        rel: 0,
+                        showinfo: 0
+                    }
+                }
+            }
+        });
+    }
+
 });
