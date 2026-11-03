@@ -71,8 +71,8 @@
             <h2 style="text-align: center; margin-bottom: 40px;">Видеогалерея</h2>
             
             <div class="video-grid">
-                <!-- Карточка 1 -->
-                <a href="https://www.youtube.com/watch?v=5YegGeQqz2w" class="video-card glightbox">
+                <!-- Карточка 1: Видео -->
+                <a href="https://www.youtube.com/watch?v=5YegGeQqz2w" class="video-card glightbox" data-gallery="mixed">
                     <div class="video-thumb">
                         <img src="https://img.youtube.com/vi/5YegGeQqz2w/hqdefault.jpg" alt="Видео 1">
                         <div class="play-icon">▶</div>
@@ -80,23 +80,27 @@
                     <p class="video-title">Русификация ШГУ и приборной панели Huindai Palisade</p>
                 </a>
 
-                <!-- Карточка 2 -->
-                <a href="https://drivemods.org/static/media/1.57055a03.jpg" class="video-card glightbox photo-card" data-gallery="mixed">
+                <!-- Карточка 2: Обложка фотоальбома -->
+                <a href="https://drivemods.org/static/media/1.57055a03.jpg" class="video-card glightbox photo-card" data-gallery="album-1">
                     <div class="video-thumb">
+                        <!-- Превью для сетки (можно использовать любую картинку) -->
                         <img src="https://drivemods.org/static/media/palisade.c73f2f5d.jpg" alt="Фото работы">
-                        <div class="play-icon">🔍</div>
+                        <div class="play-icon" style="font-size: 24px;">📸</div>
                     </div>
-                    <p class="video-title">Русификация Hyundai Palisade</p>
+                    <p class="video-title">Русификация Hyundai Palisade (Фотоальбом)</p>
                 </a>
 
+                <!-- Скрытый блок для фотоальбома -->
+                <!-- ВАЖНО: у всех ссылок внутри должен быть class="glightbox" и одинаковый data-gallery -->
                 <div class="hidden-gallery-items">
-                    <a href="https://drivemods.org/static/media/palisade.c73f2f5d.jpg" data-gallery="album-1"></a>
-                    <a href="https://drivemods.org/static/media/1.57055a03.jpg" data-gallery="album-1"></a>
+                    <!-- Первое фото уже есть в обложке, его дублировать не обязательно, 
+                         но для порядка можно оставить. -->
                     <a href="https://drivemods.org/static/media/5.8d51c83c.jpg" class="glightbox" data-gallery="album-1"></a>
                     <a href="https://drivemods.org/static/media/6.93bafa56.jpg" class="glightbox" data-gallery="album-1"></a>
+                </div>
 
                 <!-- Карточка 3 -->
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="video-card glightbox">
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="video-card glightbox" data-gallery="mixed">
                     <div class="video-thumb">
                         <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Видео 3">
                         <div class="play-icon">▶</div>
@@ -105,7 +109,7 @@
                 </a>
 
                 <!-- Карточка 4 -->
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="video-card glightbox">
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="video-card glightbox" data-gallery="mixed">
                     <div class="video-thumb">
                         <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Видео 4">
                         <div class="play-icon">▶</div>
@@ -114,7 +118,7 @@
                 </a>
 
                 <!-- Карточка 5 -->
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="video-card glightbox">
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="video-card glightbox" data-gallery="mixed">
                     <div class="video-thumb">
                         <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Видео 5">
                         <div class="play-icon">▶</div>
@@ -123,7 +127,7 @@
                 </a>
 
                 <!-- Карточка 6 -->
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="video-card glightbox">
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="video-card glightbox" data-gallery="mixed">
                     <div class="video-thumb">
                         <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Видео 6">
                         <div class="play-icon">▶</div>
@@ -132,7 +136,7 @@
                 </a>
                 
                 <!-- Карточка 7 -->
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="video-card glightbox">
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="video-card glightbox" data-gallery="mixed">
                     <div class="video-thumb">
                         <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Видео 7">
                         <div class="play-icon">▶</div>
@@ -141,7 +145,7 @@
                 </a>
 
                 <!-- Карточка 8 -->
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="video-card glightbox">
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="video-card glightbox" data-gallery="mixed">
                     <div class="video-thumb">
                         <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Видео 8">
                         <div class="play-icon">▶</div>
@@ -150,7 +154,7 @@
                 </a>
 
                 <!-- Карточка 9 -->
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="video-card glightbox">
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="video-card glightbox" data-gallery="mixed">
                     <div class="video-thumb">
                         <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Видео 9">
                         <div class="play-icon">▶</div>
@@ -159,7 +163,7 @@
                 </a>
 
                 <!-- Карточка 10 -->
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="video-card glightbox">
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="video-card glightbox" data-gallery="mixed">
                     <div class="video-thumb">
                         <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Видео 10">
                         <div class="play-icon">▶</div>
@@ -168,7 +172,7 @@
                 </a>
 
                 <!-- Карточка 11 -->
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="video-card glightbox">
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="video-card glightbox" data-gallery="mixed">
                     <div class="video-thumb">
                         <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Видео 11">
                         <div class="play-icon">▶</div>
@@ -177,7 +181,7 @@
                 </a>
 
                 <!-- Карточка 12 -->
-                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="video-card glightbox">
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" class="video-card glightbox" data-gallery="mixed">
                     <div class="video-thumb">
                         <img src="https://img.youtube.com/vi/dQw4w9WgXcQ/maxresdefault.jpg" alt="Видео 12">
                         <div class="play-icon">▶</div>
