@@ -586,3 +586,8 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     aspect-ratio: 4 / 3; /* Или оставьте 16/9, как у видео */
     object-fit: cover;
 }
+
+/* Скрываем контейнер с дополнительными ссылками */
+.hidden-gallery-items {
+    display: none !important;
+}
