@@ -591,3 +591,61 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
 .hidden-gallery-items {
     display: none !important;
 }
+
+/* =========================================
+   Исправление отступов для текстовых секций
+   ========================================= */
+
+/* 1. Делаем нормальные отступы для параграфов */
+.service-detail p {
+    margin-bottom: 20px; /* Отступ снизу от текста */
+    line-height: 1.6;    /* Межстрочный интервал для читаемости */
+}
+
+/* 2. Возвращаем маркеры и отступы для списков */
+.service-detail ul {
+    margin-bottom: 20px; /* Отступ снизу от списка */
+    padding-left: 20px;  /* Отступ слева, чтобы точки не прилипали к краю */
+    list-style-type: disc; /* Возвращаем стандартные точки */
+}
+
+.service-detail ul li {
+    margin-bottom: 8px; /* Расстояние между пунктами списка */
+}
+
+/* 3. Делаем красивую сетку для блока с текстом и картинкой */
+.service-detail {
+    display: flex;
+    gap: 40px; /* Расстояние между текстом и картинкой */
+    align-items: flex-start; /* Выравнивание по верху */
+}
+
+.service-detail .text {
+    flex: 1; /* Текст занимает все доступное место */
+}
+
+.service-detail .image {
+    flex: 1; /* Картинка занимает половину ширины */
+    min-height: 400px; /* Задаем высоту, чтобы блок не схлопывался */
+    border-radius: 12px; /* Скругляем углы картинки */
+    background-size: cover;
+    background-position: center;
+}
+
+/* 4. Отступы для заголовков h2 внутри секции */
+.service-detail h2 {
+    margin-bottom: 25px; 
+}
+
+/* 5. Адаптив для мобильных (чтобы картинка уходила под текст) */
+@media (max-width: 768px) {
+    .service-detail {
+        flex-direction: column;
+    }
+    
+    .service-detail .image {
+        width: 100%;
+        min-height: 250px;
+        margin-top: 20px;
+    }
+}
