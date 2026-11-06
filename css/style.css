@@ -24,7 +24,7 @@ img { max-width: 100%; display: block; }
 
 /* ===== ШАПКА (HEADER) ===== */
 .site-header {
-    background-color: #1a1a1a; /* Темный фон шапки */
+    background-color: #1a1a1a;
     color: #fff;
     padding: 20px 24px;
 }
@@ -37,14 +37,12 @@ img { max-width: 100%; display: block; }
     margin: 0 auto;
 }
 
-/* Логотип (картинка) */
 .header-logo .logo-img {
     max-height: 50px;
     width: auto;
     display: block;
 }
 
-/* Логотип (текст, если нет картинки) */
 .header-logo .logo-text {
     font-size: 32px;
     font-weight: 900;
@@ -53,7 +51,6 @@ img { max-width: 100%; display: block; }
     font-style: italic;
 }
 
-/* Адрес */
 .header-address {
     text-align: center;
     font-size: 14px;
@@ -61,7 +58,6 @@ img { max-width: 100%; display: block; }
     color: #d1d5db;
 }
 
-/* Контакты */
 .header-contacts {
     display: flex;
     flex-direction: column;
@@ -104,8 +100,8 @@ section .subtitle { text-align: center; color: #6b7280; margin-bottom: 40px; max
     position: relative;
     height: 200px;
     border-radius: 8px;
-    overflow: hidden; /* Обрезает все, что вылазит за края */
-    isolation: isolate; /* Защита от наложения слоев */
+    overflow: hidden;
+    isolation: isolate;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -114,8 +110,8 @@ section .subtitle { text-align: center; color: #6b7280; margin-bottom: 40px; max
     text-decoration: none;
     cursor: pointer;
     transition: 0.3s ease;
-    background: transparent; /* Прозрачный фон карточки */
-    -webkit-tap-highlight-color: transparent; /* Убирает подсветку при клике на телефоне */
+    background: transparent;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .service-card-bg {
@@ -123,14 +119,14 @@ section .subtitle { text-align: center; color: #6b7280; margin-bottom: 40px; max
     inset: 0;
     background-size: cover;
     background-position: center;
-    transition: transform 0.5s ease; /* Плавное увеличение картинки */
+    transition: transform 0.5s ease;
 }
 
 .service-card::before {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.4); /* Легкое затемнение, чтобы текст читался */
+    background: rgba(0, 0, 0, 0.4);
     z-index: 1;
     transition: 0.3s ease;
 }
@@ -146,10 +142,9 @@ section .subtitle { text-align: center; color: #6b7280; margin-bottom: 40px; max
     word-break: break-word;
 }
 
-/* Эффекты при наведении (только для ПК) */
 @media (min-width: 769px) {
     .service-card:hover .service-card-bg { transform: scale(1.1); }
-    .service-card:hover::before { background: transparent; } /* Убираем затемнение при наведении */
+    .service-card:hover::before { background: transparent; }
     .service-card:hover h3 { color: #f59e0b; }
 }
 
@@ -438,7 +433,6 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
    АДАПТИВ (Мобильная версия)
    ======================================================= */
 @media (max-width: 768px) {
-    /* Шапка */
     .header-container {
         flex-direction: column;
         gap: 15px;
@@ -453,25 +447,22 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     .header-logo .logo-text { font-size: 28px; }
     .header-phone { font-size: 20px; }
 
-    /* Общие отступы */
     section { padding: 40px 16px; }
 
-    /* Карточки услуг (в 2 колонки) */
     .services-grid-cards { 
-        grid-template-columns: repeat(1, 1fr); /* Две колонки */
+        grid-template-columns: repeat(1, 1fr);
         gap: 10px; 
     }
     
     .service-card {
-        height: 140px; /* Карточки стали ниже */
+        height: 140px;
         padding: 10px;
     }
 
     .service-card h3 {
-        font-size: 14px; /* Текст стал меньше */
+        font-size: 14px;
     }
 
-    /* Кнопки внизу */
     .fab-wrapper { bottom: 15px; right: 15px; }
     .scroll-top-btn { bottom: 15px; left: 15px; }
 }
@@ -538,7 +529,7 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     font-size: 24px;
     opacity: 0.9;
     transition: opacity 0.2s, background 0.2s;
-    padding-left: 5px; /* Центрирование треугольника */
+    padding-left: 5px;
 }
 
 .video-card:hover .play-icon {
@@ -555,7 +546,6 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     color: #1a1a1a;
 }
 
-/* Адаптивность для мобильных */
 @media (max-width: 768px) {
     .video-grid {
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -568,76 +558,67 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
    ========================================= */
 
 .photo-card .play-icon {
-    background: rgba(0, 0, 0, 0.6); /* Темный полупрозрачный фон */
-    font-size: 26px; /* Размер иконки лупы */
-    padding-left: 0; /* Убираем отступ, который был для треугольника Play */
+    background: rgba(0, 0, 0, 0.6);
+    font-size: 26px;
+    padding-left: 0;
     transition: background 0.2s, transform 0.2s;
 }
 
 .photo-card:hover .play-icon {
-    background: rgba(0, 0, 0, 0.85); /* Затемняем при наведении */
-    transform: translate(-50%, -50%) scale(1.1); /* Легкое увеличение */
+    background: rgba(0, 0, 0, 0.85);
+    transform: translate(-50%, -50%) scale(1.1);
 }
 
-/* Если картинка не 16:9 (как видео), мы можем её немного "поджать", 
-   чтобы она не искажала сетку. object-fit: cover уже прописан, 
-   но на всякий случай для фото можно сделать чуть иначе: */
 .photo-card .video-thumb img {
-    aspect-ratio: 4 / 3; /* Или оставьте 16/9, как у видео */
+    aspect-ratio: 4 / 3;
     object-fit: cover;
 }
 
-/* Скрываем контейнер с дополнительными ссылками */
 .hidden-gallery-items {
     display: none !important;
 }
 
 /* =========================================
-   Исправление отступов для текстовых секций
+   Исправление отступов для текстовых секций (.service-detail)
    ========================================= */
 
-/* 1. Делаем нормальные отступы для параграфов */
 .service-detail p {
-    margin-bottom: 20px; /* Отступ снизу от текста */
-    line-height: 1.6;    /* Межстрочный интервал для читаемости */
+    margin-bottom: 20px;
+    line-height: 1.6;
 }
 
-/* 2. Возвращаем маркеры и отступы для списков */
 .service-detail ul {
-    margin-bottom: 20px; /* Отступ снизу от списка */
-    padding-left: 20px;  /* Отступ слева, чтобы точки не прилипали к краю */
-    list-style-type: disc; /* Возвращаем стандартные точки */
+    margin-bottom: 20px;
+    padding-left: 20px;
+    list-style-type: disc;
 }
 
 .service-detail ul li {
-    margin-bottom: 8px; /* Расстояние между пунктами списка */
+    margin-bottom: 8px;
 }
 
-/* 3. Делаем красивую сетку для блока с текстом и картинкой */
 .service-detail {
     display: flex;
-    gap: 40px; /* Расстояние между текстом и картинкой */
-    align-items: flex-start; /* Выравнивание по верху */
+    gap: 40px;
+    align-items: flex-start;
 }
 
 .service-detail .text {
-    flex: 1; /* Текст занимает все доступное место */
+    flex: 1;
 }
 
 .service-detail .image {
-    flex: 1; /* Картинка занимает половину ширины */
-    min-height: 400px; /* Задаем высоту, чтобы блок не схлопывался */
-    border-radius: 12px; /* Скругляем углы картинки */
+    flex: 1;
+    min-height: 400px;
+    border-radius: 12px;
     background-size: cover;
     background-position: center;
 }
 
-/* 4. Отступы для заголовков h2 внутри секции */
 .service-detail h2 {
     margin-bottom: 25px; 
 }
 
-/* 5. Адаптив для мобильных (чтобы картинка уходила под текст) */
 @media (max-width: 768px) {
     .service-detail {
         flex-direction: column;
@@ -650,42 +631,15 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     }
 }
 
-
-/* Стили для контейнера с картинкой и подписью */
-.image-item {
-    flex: 1; /* Чтобы все три картинки встали в ряд (если позволяет место) */
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-}
-
-.image-item .image {
-    width: 100%;
-    min-height: 200px; /* Высота самой картинки */
-    border-radius: 12px;
-    background-size: cover;
-    background-position: center;
-    margin-bottom: 10px; /* Отступ от картинки до текста */
-}
-
-/* Стили для самой подписи */
-.image-item figcaption {
-    text-align: center;
-    font-size: 14px;
-    color: #d1d5db; /* Светло-серый цвет, чтобы читалось на черном фоне */
-    font-weight: 600;
-    line-height: 1.4;
-}
-
 /* =========================================
-   Стили для секции 360 (Текст сверху, фото снизу)
+   Стили для секции 360 (Текст сверху, фото снизу со стрелками)
    ========================================= */
 
 /* Блок с текстом */
 .service-text-block {
-    max-width: 800px; /* Ограничиваем ширину текста для читаемости */
-    margin: 0 auto 40px; /* Центрируем текст и даем отступ снизу до картинок */
-    text-align: center; /* Выравниваем текст по центру (если нужно влево - уберите) */
+    max-width: 800px;
+    margin: 0 auto 40px;
+    text-align: center;
 }
 
 .service-text-block h2 {
@@ -701,48 +655,67 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
 /* Контейнер для картинок (в ряд) */
 .image-row {
     display: flex;
-    gap: 20px; /* Расстояние между картинками */
-    justify-content: center; /* Центрируем картинки */
-    flex-wrap: wrap; /* Разрешаем перенос на новую строку на маленьких экранах */
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap; 
+    margin-top: 40px;
 }
 
 /* Карточка отдельной картинки */
 .image-item {
-    flex: 1; /* Картинки делят пространство поровну */
-    min-width: 250px; /* Минимальная ширина, чтобы на телефонах они не были слишком узкими */
-    max-width: 350px; /* Максимальная ширина картинки */
+    flex: 1;
+    max-width: 320px;
     display: flex;
     flex-direction: column;
     margin: 0;
 }
 
-/* Сама картинка */
+/* Сама картинка (квадратная) */
 .image-item .image {
     width: 100%;
-    height: 250px; /* Фиксированная высота для ровного ряда */
-    border-radius: 12px;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
     background-size: cover;
     background-position: center;
-    margin-bottom: 12px;
+    margin-bottom: 15px;
 }
 
 /* Подпись под картинкой */
 .image-item figcaption {
     text-align: center;
-    font-size: 14px;
+    font-size: 15px;
     color: #d1d5db;
-    font-weight: 600;
     line-height: 1.4;
 }
 
-/* Адаптив для мобильных */
+/* Стили для красных стрелочек между картинками */
+.arrow-divider {
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.arrow-divider svg {
+    width: 30px;
+    height: 30px;
+}
+
+/* Адаптив для секции 360 на мобильных */
 @media (max-width: 768px) {
     .image-row {
-        flex-direction: column; /* На телефонах картинки встают в столбик */
+        flex-direction: column;
         align-items: center;
+        flex-wrap: wrap;
     }
     .image-item {
         width: 100%;
         max-width: 100%;
+    }
+    /* На мобильных скрываем стрелочки, чтобы не мешали */
+    .arrow-divider {
+        display: none;
     }
 }
