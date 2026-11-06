@@ -1,68 +1,78 @@
 /* =========================================================
    SCRIPT.JS — поведение общих блоков
-   (FAB, бургер, карта, scroll-top, отправка формы)
    ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* ==================== 1. FAB ==================== */
-    const fabMenu = document.getElementById('fabMenu');
-    const fabToggle = document.getElementById('fabToggle');
+    /* ==================== 1. FAB (Делегирование) ==================== */
+    // Слушаем клики по всему документу
+    document.body.addEventListener('click', (e) => {
+        const fabToggle = e.target.closest('#fabToggle');
+        const fabMenu = document.getElementById('fabMenu');
+        const isInsideFab = e.target.closest('.fab-wrapper');
 
-    if (fabToggle && fabMenu) {
-        fabToggle.addEventListener('click', (e) => {
+        // Если кликнули на главную кнопку FAB
+        if (fabToggle) {
+            e.preventDefault();
             e.stopPropagation();
             fabMenu.classList.toggle('open');
-        });
+            return;
+        }
 
-        document.addEventListener('click', (e) => {
-            if (fabMenu.classList.contains('open') && !fabMenu.contains(e.target)) {
-                fabMenu.classList.remove('open');
-            }
-        });
+        // Если кликнули на ссылку внутри FAB
+        if (e.target.closest('.fab-btn')) {
+            fabMenu.classList.remove('open');
+        }
 
-        fabMenu.querySelectorAll('.fab-btn').forEach(btn => {
-            btn.addEventListener('click', () => fabMenu.classList.remove('open'));
-        });
-    }
+        // Если меню открыто и кликнули вне его
+        if (fabMenu && fabMenu.classList.contains('open') && !isInsideFab) {
+            fabMenu.classList.remove('open');
+        }
+    });
 
     /* ==================== 2. КНОПКА "НАВЕРХ" ==================== */
-    const scrollTopBtn = document.getElementById('scrollTopBtn');
-    if (scrollTopBtn) {
-        window.addEventListener('scroll', () => {
+    // Обработчик скролла
+    window.addEventListener('scroll', () => {
+        const scrollTopBtn = document.getElementById('scrollTopBtn');
+        if (scrollTopBtn) {
             scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
-        });
-        scrollTopBtn.addEventListener('click', () => {
+        }
+    });
+
+    // Клик по кнопке наверх
+    document.body.addEventListener('click', (e) => {
+        if (e.target.closest('#scrollTopBtn')) {
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
+        }
+    });
 
     /* ==================== 3. БУРГЕР ==================== */
-    const burgerToggle = document.getElementById('burgerToggle');
-    const burgerOverlay = document.getElementById('burgerOverlay');
+    document.body.addEventListener('click', (e) => {
+        const burgerToggle = e.target.closest('#burgerToggle');
+        const burgerOverlay = document.getElementById('burgerOverlay');
 
-    if (burgerToggle && burgerOverlay) {
-        burgerToggle.addEventListener('click', () => {
+        // Открытие/закрытие бургера
+        if (burgerToggle) {
+            e.preventDefault();
             burgerOverlay.classList.toggle('open');
             burgerToggle.classList.toggle('active');
-        });
+            return;
+        }
 
-        burgerOverlay.addEventListener('click', (e) => {
-            if (e.target === burgerOverlay) {
-                burgerOverlay.classList.remove('open');
-                burgerToggle.classList.remove('active');
-            }
-        });
+        // Закрытие при клике на оверлей (фон)
+        if (burgerOverlay && e.target === burgerOverlay) {
+            burgerOverlay.classList.remove('open');
+            document.getElementById('burgerToggle').classList.remove('active');
+        }
 
-        burgerOverlay.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                burgerOverlay.classList.remove('open');
-                burgerToggle.classList.remove('active');
-            });
-        });
-    }
+        // Закрытие при клике на любую ссылку внутри бургера
+        if (e.target.closest('.burger-menu-panel a')) {
+            burgerOverlay.classList.remove('open');
+            document.getElementById('burgerToggle').classList.remove('active');
+        }
+    });
 
-    /* ==================== 4. МОДАЛКА КАРТ (делегирование) ==================== */
+    /* ==================== 4. МОДАЛКА КАРТ ==================== */
     const mapModalHtml = `
         <div class="map-modal-overlay" id="mapModal">
             <div class="map-modal-content">
@@ -75,62 +85,63 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>
         </div>`;
-    document.body.insertAdjacentHTML('beforeend', mapModalHtml);
+    
+    if (!document.getElementById('mapModal')) {
+        document.body.insertAdjacentHTML('beforeend', mapModalHtml);
+    }
 
-    const mapModal = document.getElementById('mapModal');
-    const closeMapBtn = document.getElementById('closeMapBtn');
-
-    /* Делегирование: работает для ВСЕХ ссылок с классом .js-address-link */
     document.body.addEventListener('click', (e) => {
         const link = e.target.closest('.js-address-link');
-        if (!link) return;
-        e.preventDefault();
-        if (burgerOverlay) {
-            burgerOverlay.classList.remove('open');
-            burgerToggle && burgerToggle.classList.remove('active');
-        }
-        mapModal.classList.add('open');
-    });
-
-    closeMapBtn.addEventListener('click', () => mapModal.classList.remove('open'));
-    mapModal.addEventListener('click', (e) => {
-        if (e.target === mapModal) mapModal.classList.remove('open');
-    });
-
-/* ==================== 5. ОТПРАВКА ФОРМЫ ==================== */
-const form = document.getElementById('leadForm');
-if (form) {
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const msg = document.getElementById('formMessage');
-        const name = form.name.value.trim();
-        const phone = form.phone.value.trim();
-
-        if (!name || !phone) {
-            msg.textContent = 'Заполните имя и телефон';
-            msg.className = 'form-message error';
+        if (link) {
+            e.preventDefault();
+            const burgerOverlay = document.getElementById('burgerOverlay');
+            if (burgerOverlay) {
+                burgerOverlay.classList.remove('open');
+                const burgerBtn = document.getElementById('burgerToggle');
+                if (burgerBtn) burgerBtn.classList.remove('active');
+            }
+            const mapModal = document.getElementById('mapModal');
+            if (mapModal) mapModal.classList.add('open');
             return;
         }
 
-        // Если на странице есть активный select услуг (главная) — он обязателен
-        const serviceSelect = form.querySelector('select[name="service"]:not([disabled])');
-        if (serviceSelect && !serviceSelect.value) {
-            msg.textContent = 'Выберите услугу';
-            msg.className = 'form-message error';
-            return;
+        if (e.target.closest('#closeMapBtn') || e.target.id === 'mapModal') {
+            const mapModal = document.getElementById('mapModal');
+            if (mapModal) mapModal.classList.remove('open');
         }
-
-        // Итоговое значение услуги (для отправки):
-        // - на главной: serviceSelect.value
-        // - на странице услуги: hidden input name="service"
-        const serviceValue = serviceSelect
-            ? serviceSelect.value
-            : (form.querySelector('input[name="service"]')?.value || '');
-        console.log('Отправка заявки:', { name, phone, service: serviceValue });
-
-        /* Здесь — ваш способ отправки (Telegram Bot API, fetch и т.п.) */
-        msg.textContent = 'Спасибо! Заявка отправлена.';
-        msg.className = 'form-message success';
-        form.reset();
     });
-}
+
+    /* ==================== 5. ОТПРАВКА ФОРМЫ ==================== */
+    document.body.addEventListener('submit', (e) => {
+        if (e.target && e.target.id === 'leadForm') {
+            e.preventDefault();
+            const form = e.target;
+            const msg = document.getElementById('formMessage');
+            const name = form.name.value.trim();
+            const phone = form.phone.value.trim();
+
+            if (!name || !phone) {
+                msg.textContent = 'Заполните имя и телефон';
+                msg.className = 'form-message error';
+                return;
+            }
+
+            const serviceSelect = form.querySelector('select[name="service"]:not([disabled])');
+            if (serviceSelect && !serviceSelect.value) {
+                msg.textContent = 'Выберите услугу';
+                msg.className = 'form-message error';
+                return;
+            }
+
+            const serviceValue = serviceSelect
+                ? serviceSelect.value
+                : (form.querySelector('input[name="service"]')?.value || '');
+            
+            console.log('Отправка заявки:', { name, phone, service: serviceValue });
+
+            msg.textContent = 'Спасибо! Заявка отправлена.';
+            msg.className = 'form-message success';
+            form.reset();
+        }
+    });
+});
