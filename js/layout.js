@@ -1,6 +1,5 @@
 /* =========================================================
    LAYOUT.JS — общие блоки для всех страниц
-   Инжектит шапку, бургер-меню, FAB, кнопку "наверх", форму, футер.
    ========================================================= */
 
 (function () {
@@ -12,7 +11,6 @@
     const ADDRESS_FULL = 'г. Владивосток, ул. Волнистая 12';
     const SCHEDULE = 'Работаем с 10:00 до 18:00';
 
-    /* ---------- СПИСОК УСЛУГ ---------- */
     const SERVICES_LIST = [
         'Русификация автомобилей',
         'Установка видеорегистраторов',
@@ -35,7 +33,6 @@
         'Другая услуга'
     ];
 
-    /* ---------- ШАПКА ---------- */
     function headerHTML() {
         return `
         <div class="container header-container">
@@ -54,7 +51,6 @@
         </div>`;
     }
 
-    /* ---------- БУРГЕР ---------- */
     function burgerHTML() {
         return `
         <button class="floating-burger" id="burgerToggle" aria-label="Открыть меню">
@@ -79,7 +75,6 @@
         </div>`;
     }
 
-    /* ---------- FAB (мессенджеры) ---------- */
     function fabHTML() {
         return `
         <div class="fab-wrapper" id="fabMenu">
@@ -104,19 +99,6 @@
         </div>`;
     }
 
-    /* ---------- КНОПКА "НАВЕРХ" ---------- */
-    function scrollTopHTML() {
-        return `
-        <button class="scroll-top-btn" id="scrollTopBtn" title="Наверх" aria-label="Наверх">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 19V5M5 12l7-7 7 7"/>
-            </svg>
-        </button>`;
-    }
-
-    /* ---------- ФОРМА ---------- */
-    /* Если service передан (страница услуги) — фиксированное поле.
-       Если нет (главная) — выпадающий список всех услуг. */
     function formHTML(service) {
         const serviceField = service
             ? `<input type="hidden" name="service" value="${service}">
@@ -145,7 +127,6 @@
         </div>`;
     }
 
-    /* ---------- ФУТЕР ---------- */
     function footerHTML() {
         return `
         <div class="container">
@@ -159,7 +140,6 @@
         </div>`;
     }
 
-    /* ---------- ИНИЦИАЛИЗАЦИЯ ---------- */
     function mount() {
         const header = document.getElementById('site-header');
         if (header) header.innerHTML = headerHTML();
@@ -177,11 +157,6 @@
         if (formMount) {
             const service = formMount.dataset.service || '';
             formMount.innerHTML = formHTML(service);
-        }
-
-        // Кнопка «Наверх» — добавляем, если её ещё нет в DOM
-        if (!document.getElementById('scrollTopBtn')) {
-            document.body.insertAdjacentHTML('beforeend', scrollTopHTML());
         }
     }
 
