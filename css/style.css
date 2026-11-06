@@ -773,6 +773,6 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
 
 /* Уменьшаем ТОЛЬКО иконку MAX внутри кнопки */
 .fab-btn[href*="max.ru"] img {
-    padding: 10px !important; /* Подберите 8-12px, чтобы сравнялось с трубкой */
+    padding: 4px !important; /* Подберите 8-12px, чтобы сравнялось с трубкой */
     box-sizing: border-box !important;
 }
