@@ -97,25 +97,40 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === mapModal) mapModal.classList.remove('open');
     });
 
-    /* ==================== 5. ОТПРАВКА ФОРМЫ ==================== */
-    const form = document.getElementById('leadForm');
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const msg = document.getElementById('formMessage');
-            const name = form.name.value.trim();
-            const phone = form.phone.value.trim();
+/* ==================== 5. ОТПРАВКА ФОРМЫ ==================== */
+const form = document.getElementById('leadForm');
+if (form) {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const msg = document.getElementById('formMessage');
+        const name = form.name.value.trim();
+        const phone = form.phone.value.trim();
 
-            if (!name || !phone) {
-                msg.textContent = 'Заполните имя и телефон';
-                msg.className = 'form-message error';
-                return;
-            }
+        if (!name || !phone) {
+            msg.textContent = 'Заполните имя и телефон';
+            msg.className = 'form-message error';
+            return;
+        }
 
-            /* Здесь — ваш способ отправки (Telegram Bot API, fetch и т.п.) */
-            msg.textContent = 'Спасибо! Заявка отправлена.';
-            msg.className = 'form-message success';
-            form.reset();
-        });
-    }
-});
+        // Если на странице есть активный select услуг (главная) — он обязателен
+        const serviceSelect = form.querySelector('select[name="service"]:not([disabled])');
+        if (serviceSelect && !serviceSelect.value) {
+            msg.textContent = 'Выберите услугу';
+            msg.className = 'form-message error';
+            return;
+        }
+
+        // Итоговое значение услуги (для отправки):
+        // - на главной: serviceSelect.value
+        // - на странице услуги: hidden input name="service"
+        const serviceValue = serviceSelect
+            ? serviceSelect.value
+            : (form.querySelector('input[name="service"]')?.value || '');
+        console.log('Отправка заявки:', { name, phone, service: serviceValue });
+
+        /* Здесь — ваш способ отправки (Telegram Bot API, fetch и т.п.) */
+        msg.textContent = 'Спасибо! Заявка отправлена.';
+        msg.className = 'form-message success';
+        form.reset();
+    });
+}
