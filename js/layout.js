@@ -1,5 +1,6 @@
 /* =========================================================
    LAYOUT.JS — общие блоки для всех страниц
+   Инжектит шапку, бургер-меню, FAB, форму, футер.
    ========================================================= */
 
 (function () {
@@ -11,6 +12,7 @@
     const ADDRESS_FULL = 'г. Владивосток, ул. Волнистая 12';
     const SCHEDULE = 'Работаем с 10:00 до 18:00';
 
+    /* ---------- СПИСОК УСЛУГ ---------- */
     const SERVICES_LIST = [
         'Русификация автомобилей',
         'Установка видеорегистраторов',
@@ -33,6 +35,7 @@
         'Другая услуга'
     ];
 
+    /* ---------- ШАПКА ---------- */
     function headerHTML() {
         return `
         <div class="container header-container">
@@ -51,6 +54,7 @@
         </div>`;
     }
 
+    /* ---------- БУРГЕР ---------- */
     function burgerHTML() {
         return `
         <button class="floating-burger" id="burgerToggle" aria-label="Открыть меню">
@@ -75,6 +79,7 @@
         </div>`;
     }
 
+    /* ---------- FAB (мессенджеры) ---------- */
     function fabHTML() {
         return `
         <div class="fab-wrapper" id="fabMenu">
@@ -99,6 +104,9 @@
         </div>`;
     }
 
+    /* ---------- ФОРМА ---------- */
+    /* Если data-service задан (страница услуги) — фиксированное поле.
+       Если нет (главная) — выпадающий список всех услуг. */
     function formHTML(service) {
         const serviceField = service
             ? `<input type="hidden" name="service" value="${service}">
@@ -127,6 +135,7 @@
         </div>`;
     }
 
+    /* ---------- ФУТЕР ---------- */
     function footerHTML() {
         return `
         <div class="container">
@@ -140,6 +149,7 @@
         </div>`;
     }
 
+    /* ---------- ИНИЦИАЛИЗАЦИЯ ---------- */
     function mount() {
         const header = document.getElementById('site-header');
         if (header) header.innerHTML = headerHTML();
@@ -155,6 +165,7 @@
 
         const formMount = document.getElementById('contact-form-mount');
         if (formMount) {
+            // Если на странице задан data-service, берем его. Иначе пустая строка (главная).
             const service = formMount.dataset.service || '';
             formMount.innerHTML = formHTML(service);
         }
