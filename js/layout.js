@@ -12,6 +12,29 @@
     const ADDRESS_FULL = 'г. Владивосток, ул. Волнистая 12';
     const SCHEDULE = 'Работаем с 10:00 до 18:00';
 
+    /* ---------- СПИСОК УСЛУГ ---------- */
+    const SERVICES_LIST = [
+        'Русификация автомобилей',
+        'Установка видеорегистраторов',
+        'Установка систем кругового обзора 360 Bird View',
+        'Установка системы контроля слепых зон',
+        'Расширенный CarPlay в любой авто',
+        'Установка и подбор акустических систем',
+        'Подключение дополнительных камер к штатным мониторам',
+        'Установка Apple TV на штатный монитор',
+        'Установка систем защиты от угона',
+        'Автоматические доводчики дверей',
+        'Выдвижные электро пороги',
+        'Ambient Light — подсветка салона',
+        'Установка комплексной шумоизоляции',
+        'Установка дополнительных мониторов',
+        'Установка системы «Звёздное небо»',
+        'Мониторы для задних пассажиров',
+        'Оригинальное дооснащение BMW',
+        'Топливный и масляный корректор',
+        'Другая услуга'
+    ];
+
     /* ---------- ШАПКА ---------- */
     function headerHTML() {
         return `
@@ -82,8 +105,19 @@
     }
 
     /* ---------- ФОРМА ---------- */
-    /* data-service читается со страницы (data-service на #contact-form-mount) */
+    /* Если service передан (страница услуги) — фиксированное поле.
+       Если нет (главная) — выпадающий список всех услуг. */
     function formHTML(service) {
+        const serviceField = service
+            ? `<input type="hidden" name="service" value="${service}">
+               <select name="service_display" disabled>
+                   <option selected>${service}</option>
+               </select>`
+            : `<select name="service" required>
+                   <option value="" disabled selected>Выберите услугу *</option>
+                   ${SERVICES_LIST.map(s => `<option value="${s}">${s}</option>`).join('')}
+               </select>`;
+
         return `
         <div class="container">
             <h2>Оставить заявку</h2>
@@ -92,10 +126,7 @@
                 <form id="leadForm" novalidate>
                     <input type="text" name="name" placeholder="Ваше имя *" required>
                     <input type="tel" name="phone" placeholder="Телефон *" required>
-                    <input type="hidden" name="service" value="${service}">
-                    <select name="service_display" disabled>
-                        <option selected>${service}</option>
-                    </select>
+                    ${serviceField}
                     <textarea name="message" rows="3" placeholder="Комментарий (необязательно)"></textarea>
                     <button type="submit" class="btn">Отправить заявку</button>
                     <div class="form-message" id="formMessage"></div>
@@ -134,7 +165,7 @@
 
         const formMount = document.getElementById('contact-form-mount');
         if (formMount) {
-            const service = formMount.dataset.service || 'Другая услуга';
+            const service = formMount.dataset.service || '';
             formMount.innerHTML = formHTML(service);
         }
     }
