@@ -744,7 +744,7 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     padding: 0 !important;
     width: 50px !important;
     height: 50px !important;
-    border-radius: 50% !important;
+    border-radius: 12px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
