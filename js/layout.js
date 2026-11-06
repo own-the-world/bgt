@@ -34,7 +34,6 @@
         "Другая услуга"
     ];
 
-    /* ---------- ШАПКА ---------- */
     function headerHTML() {
         return `
         <div class="container header-container">
@@ -53,7 +52,6 @@
         </div>`;
     }
 
-    /* ---------- БУРГЕР ---------- */
     function burgerHTML() {
         return `
         <button class="floating-burger" id="burgerToggle" aria-label="Открыть меню">
@@ -78,7 +76,6 @@
         </div>`;
     }
 
-    /* ---------- FAB ---------- */
     function fabHTML() {
         return `
         <div class="fab-wrapper" id="fabMenu">
@@ -103,9 +100,7 @@
         </div>`;
     }
 
-    /* ---------- ФОРМА ---------- */
     function formHTML(service) {
-        // Генерируем опции для выпадающего списка (только если это не внутренняя страница)
         let selectHtml = '';
         if (service === 'Выберите услугу') {
             const options = SERVICES_LIST.map(opt => `<option value="${opt}">${opt}</option>`).join('');
@@ -117,7 +112,6 @@
                 <input type="hidden" name="service" id="serviceHidden" value="">
             `;
         } else {
-            // Для внутренних страниц — просто скрытое поле и визуальный текст
             selectHtml = `
                 <input type="hidden" name="service" value="${service}">
                 <select name="service_display" disabled>
@@ -143,15 +137,10 @@
         </div>`;
     }
 
-
-
-    /* ---------- ИНИЦИАЛИЗАЦИЯ ---------- */
     function mount() {
+        // 1. Отрисовываем шапку, меню и кнопки
         const header = document.getElementById('site-header');
         if (header) header.innerHTML = headerHTML();
-
-        const footer = document.getElementById('site-footer');
-        if (footer) footer.innerHTML = footerHTML();
 
         const fab = document.getElementById('fab-mount');
         if (fab) fab.innerHTML = fabHTML();
@@ -159,14 +148,15 @@
         const burger = document.getElementById('burger-mount');
         if (burger) burger.innerHTML = burgerHTML();
 
+        // 2. Отрисовываем форму, если она есть на странице
         const formMount = document.getElementById('contact-form-mount');
         if (formMount) {
-            // Если data-service не задан, значит мы на главной и нужен выбор из списка
             const service = formMount.dataset.service || 'Выберите услугу';
             formMount.innerHTML = formHTML(service);
         }
     }
 
+    // Запускаем после загрузки DOM
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', mount);
     } else {
