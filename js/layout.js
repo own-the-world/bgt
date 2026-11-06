@@ -11,7 +11,6 @@
     const ADDRESS_FULL = 'г. Владивосток, ул. Волнистая 12';
     const SCHEDULE = 'Работаем с 10:00 до 18:00';
 
-    // СПИСОК ВСЕХ УСЛУГ ДЛЯ ГЛАВНОЙ СТРАНИЦЫ
     const SERVICES_LIST = [
         "Русификация автомобилей",
         "Установка видеорегистраторов",
@@ -138,17 +137,26 @@
     }
 
     function mount() {
-        // 1. Отрисовываем шапку, меню и кнопки
         const header = document.getElementById('site-header');
         if (header) header.innerHTML = headerHTML();
 
-        const fab = document.getElementById('fab-mount');
-        if (fab) fab.innerHTML = fabHTML();
+        // Автосоздание контейнеров, если их нет в HTML
+        let fab = document.getElementById('fab-mount');
+        if (!fab) {
+            fab = document.createElement('div');
+            fab.id = 'fab-mount';
+            document.body.appendChild(fab);
+        }
+        fab.innerHTML = fabHTML();
 
-        const burger = document.getElementById('burger-mount');
-        if (burger) burger.innerHTML = burgerHTML();
+        let burger = document.getElementById('burger-mount');
+        if (!burger) {
+            burger = document.createElement('div');
+            burger.id = 'burger-mount';
+            document.body.appendChild(burger);
+        }
+        burger.innerHTML = burgerHTML();
 
-        // 2. Отрисовываем форму, если она есть на странице
         const formMount = document.getElementById('contact-form-mount');
         if (formMount) {
             const service = formMount.dataset.service || 'Выберите услугу';
@@ -156,7 +164,6 @@
         }
     }
 
-    // Запускаем после загрузки DOM
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', mount);
     } else {
