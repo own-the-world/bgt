@@ -657,7 +657,7 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     display: flex;
     gap: 20px;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* <--- ВОТ ЭТО ВЫРАВНИВАЕТ ПО ВЕРХУ */
     flex-wrap: nowrap; 
     margin-top: 40px;
 }
