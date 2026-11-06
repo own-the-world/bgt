@@ -86,22 +86,22 @@ function fabHTML() {
 
             <!-- WhatsApp -->
             <a href="https://wa.me/79024833907" target="_blank" rel="noopener" class="fab-btn" title="WhatsApp">
-                <img src="images/icons/icon-whatsapp.png" alt="WhatsApp">
+                <img src="images/whatsapp.png" alt="WhatsApp">
             </a>
 
             <!-- Telegram -->
             <a href="https://t.me/+79024833907" target="_blank" rel="noopener" class="fab-btn" title="Telegram">
-                <img src="images/icons/icon-telegram.png" alt="Telegram">
+                <img src="images/telegram.png" alt="Telegram">
             </a>
 
             <!-- MAX -->
             <a href="https://max.ru/+79024833907" target="_blank" rel="noopener" class="fab-btn" title="MAX">
-                <img src="images/icons/icon-max.png" alt="MAX">
+                <img src="imagesmax.png" alt="MAX">
             </a>
 
             <!-- Позвонить -->
             <a href="tel:${PHONE}" class="fab-btn" title="Позвонить">
-                <img src="images/icons/icon-phone.png" alt="Позвонить">
+                <img src="images/phone.png" alt="Позвонить">
             </a>
         </div>
         <button class="fab-toggle" id="fabToggle" aria-label="Связаться с нами">
