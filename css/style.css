@@ -255,11 +255,6 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     box-shadow: none !important;
     color: #ef4444;
 }
-.fab-btn:hover {
-    background: #ef4444 !important;
-    color: #fff !important;
-    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4) !important;
-}
 
 .scroll-top-btn {
     position: fixed;
