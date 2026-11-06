@@ -719,3 +719,20 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
         display: none;
     }
 }
+
+/* ===== Дополнения для новой структуры ===== */
+
+/* Контейнер для скрытых элементов фотоальбома — не должно быть !important с display:none,
+   иначе GLightbox не сможет их прочитать */
+.hidden-gallery-items {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* Скрываем контейнер футера, если он пуст до инициализации, чтобы не мигало */
+#site-footer:empty,
+#site-header:empty { display: none; }
