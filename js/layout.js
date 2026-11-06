@@ -96,7 +96,7 @@ function fabHTML() {
 
             <!-- MAX -->
             <a href="https://max.ru/+79024833907" target="_blank" rel="noopener" class="fab-btn" title="MAX">
-                <img src="imagesmax.png" alt="MAX">
+                <img src="images/max.png" alt="MAX">
             </a>
 
             <!-- Позвонить -->
