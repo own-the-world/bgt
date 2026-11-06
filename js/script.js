@@ -106,33 +106,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const name = form.name.value.trim();
             const phone = form.phone.value.trim();
 
-            // Если на главной выбрали услугу из списка — переносим её в скрытое поле
-            const serviceSelect = document.getElementById('serviceSelect');
-            const serviceHidden = document.getElementById('serviceHidden');
-            if (serviceSelect && serviceHidden) {
-                serviceHidden.value = serviceSelect.value;
-            }
-
-            const serviceValue = serviceHidden ? serviceHidden.value : (form.service ? form.service.value : '');
-
             if (!name || !phone) {
                 msg.textContent = 'Заполните имя и телефон';
                 msg.className = 'form-message error';
                 return;
             }
 
-            if (serviceSelect && !serviceSelect.value) {
-                msg.textContent = 'Пожалуйста, выберите услугу';
-                msg.className = 'form-message error';
-                return;
-            }
-
-            /* Здесь — ваш способ отправки (Telegram Bot API, fetch и т.п.)
-               В serviceValue лежит название услуги. */
-            console.log("Отправка формы:", { name, phone, service: serviceValue });
-
+            /* Здесь — ваш способ отправки (Telegram Bot API, fetch и т.п.) */
             msg.textContent = 'Спасибо! Заявка отправлена.';
             msg.className = 'form-message success';
             form.reset();
         });
     }
+});
