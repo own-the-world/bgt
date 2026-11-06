@@ -736,3 +736,42 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
 /* Скрываем контейнер футера, если он пуст до инициализации, чтобы не мигало */
 #site-footer:empty,
 #site-header:empty { display: none; }
+
+/* =======================================================
+   ПЕРЕОПРЕДЕЛЕНИЕ КНОПОК МЕССЕНДЖЕРОВ (FAB)
+   ======================================================= */
+
+/* Убираем красную обводку и задаем размер */
+.fab-btn {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: transform 0.2s ease !important;
+    overflow: hidden !important;
+}
+
+/* Эффект увеличения при наведении */
+.fab-btn:hover {
+    transform: scale(1.15) !important;
+}
+
+/* Картинки внутри кнопок */
+.fab-btn img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    display: block !important;
+}
+
+/* Выравнивание для кнопки "Позвонить" (там SVG) */
+.fab-btn > div {
+    width: 100%;
+    height: 100%;
+}
