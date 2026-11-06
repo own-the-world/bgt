@@ -649,3 +649,30 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
         margin-top: 20px;
     }
 }
+
+
+/* Стили для контейнера с картинкой и подписью */
+.image-item {
+    flex: 1; /* Чтобы все три картинки встали в ряд (если позволяет место) */
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
+
+.image-item .image {
+    width: 100%;
+    min-height: 200px; /* Высота самой картинки */
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 10px; /* Отступ от картинки до текста */
+}
+
+/* Стили для самой подписи */
+.image-item figcaption {
+    text-align: center;
+    font-size: 14px;
+    color: #d1d5db; /* Светло-серый цвет, чтобы читалось на черном фоне */
+    font-weight: 600;
+    line-height: 1.4;
+}
