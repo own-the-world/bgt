@@ -763,8 +763,6 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     height: 100% !important;
     object-fit: contain !important;
     display: block !important;
-    padding: 10px !important; /* <--- ДОБАВИТЬ ЭТО */
-    box-sizing: border-box !important; /* чтобы padding не увеличивал размер */
 }
 
 /* Выравнивание для кнопки "Позвонить" (там SVG) */
