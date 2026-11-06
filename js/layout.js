@@ -1,5 +1,6 @@
 /* =========================================================
    LAYOUT.JS — общие блоки для всех страниц
+   Инжектит шапку, бургер-меню, FAB, форму, футер.
    ========================================================= */
 
 (function () {
@@ -11,28 +12,7 @@
     const ADDRESS_FULL = 'г. Владивосток, ул. Волнистая 12';
     const SCHEDULE = 'Работаем с 10:00 до 18:00';
 
-    const SERVICES_LIST = [
-        "Русификация автомобилей",
-        "Установка видеорегистраторов",
-        "Система кругового обзора 360",
-        "Установка системы контроля слепых зон",
-        "Расширенный CarPlay",
-        "Установка акустических систем",
-        "Подключение дополнительных камер",
-        "Установка Apple TV",
-        "Системы защиты от угона",
-        "Доводчики дверей",
-        "Выдвижные пороги",
-        "Подсветка салона Ambient Light",
-        "Комплексная шумоизоляция",
-        "Установка дополнительных мониторов",
-        "Система «Звёздное небо»",
-        "Мониторы для задних пассажиров",
-        "Оригинальное дооснащение BMW",
-        "Топливный и масляный корректор",
-        "Другая услуга"
-    ];
-
+    /* ---------- ШАПКА ---------- */
     function headerHTML() {
         return `
         <div class="container header-container">
@@ -51,6 +31,7 @@
         </div>`;
     }
 
+    /* ---------- БУРГЕР ---------- */
     function burgerHTML() {
         return `
         <button class="floating-burger" id="burgerToggle" aria-label="Открыть меню">
@@ -75,6 +56,7 @@
         </div>`;
     }
 
+    /* ---------- FAB (мессенджеры) ---------- */
     function fabHTML() {
         return `
         <div class="fab-wrapper" id="fabMenu">
@@ -99,26 +81,9 @@
         </div>`;
     }
 
+    /* ---------- ФОРМА ---------- */
+    /* data-service читается со страницы (data-service на #contact-form-mount) */
     function formHTML(service) {
-        let selectHtml = '';
-        if (service === 'Выберите услугу') {
-            const options = SERVICES_LIST.map(opt => `<option value="${opt}">${opt}</option>`).join('');
-            selectHtml = `
-                <select name="service_select" id="serviceSelect" required>
-                    <option value="" disabled selected>— Выберите услугу —</option>
-                    ${options}
-                </select>
-                <input type="hidden" name="service" id="serviceHidden" value="">
-            `;
-        } else {
-            selectHtml = `
-                <input type="hidden" name="service" value="${service}">
-                <select name="service_display" disabled>
-                    <option selected>${service}</option>
-                </select>
-            `;
-        }
-
         return `
         <div class="container">
             <h2>Оставить заявку</h2>
@@ -127,7 +92,10 @@
                 <form id="leadForm" novalidate>
                     <input type="text" name="name" placeholder="Ваше имя *" required>
                     <input type="tel" name="phone" placeholder="Телефон *" required>
-                    ${selectHtml}
+                    <input type="hidden" name="service" value="${service}">
+                    <select name="service_display" disabled>
+                        <option selected>${service}</option>
+                    </select>
                     <textarea name="message" rows="3" placeholder="Комментарий (необязательно)"></textarea>
                     <button type="submit" class="btn">Отправить заявку</button>
                     <div class="form-message" id="formMessage"></div>
@@ -136,30 +104,37 @@
         </div>`;
     }
 
+    /* ---------- ФУТЕР ---------- */
+    function footerHTML() {
+        return `
+        <div class="container">
+            <p>© ${new Date().getFullYear()} BGT — тюнинг и дооснащение автомобилей во Владивостоке</p>
+            <p style="margin-top:6px;">${ADDRESS_FULL} · <a href="tel:${PHONE}">${PHONE_DISPLAY}</a></p>
+            <div class="footer-messengers">
+                <a href="https://wa.me/79024833907" target="_blank" rel="noopener">WhatsApp</a>
+                <a href="https://t.me/+79024833907" target="_blank" rel="noopener">Telegram</a>
+                <a href="https://max.ru/+79024833907" target="_blank" rel="noopener">MAX</a>
+            </div>
+        </div>`;
+    }
+
+    /* ---------- ИНИЦИАЛИЗАЦИЯ ---------- */
     function mount() {
         const header = document.getElementById('site-header');
         if (header) header.innerHTML = headerHTML();
 
-        // Автосоздание контейнеров, если их нет в HTML
-        let fab = document.getElementById('fab-mount');
-        if (!fab) {
-            fab = document.createElement('div');
-            fab.id = 'fab-mount';
-            document.body.appendChild(fab);
-        }
-        fab.innerHTML = fabHTML();
+        const footer = document.getElementById('site-footer');
+        if (footer) footer.innerHTML = footerHTML();
 
-        let burger = document.getElementById('burger-mount');
-        if (!burger) {
-            burger = document.createElement('div');
-            burger.id = 'burger-mount';
-            document.body.appendChild(burger);
-        }
-        burger.innerHTML = burgerHTML();
+        const fab = document.getElementById('fab-mount');
+        if (fab) fab.innerHTML = fabHTML();
+
+        const burger = document.getElementById('burger-mount');
+        if (burger) burger.innerHTML = burgerHTML();
 
         const formMount = document.getElementById('contact-form-mount');
         if (formMount) {
-            const service = formMount.dataset.service || 'Выберите услугу';
+            const service = formMount.dataset.service || 'Другая услуга';
             formMount.innerHTML = formHTML(service);
         }
     }
