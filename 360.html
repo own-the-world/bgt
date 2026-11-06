@@ -47,17 +47,32 @@
         </div>
     </header>
 
-    <section>
-        <div class="container service-detail">
-            <div class="text">
-                <h2>Система Кругового Обзора 360 Bird View</h2>
-                <p>представляет собой комплекс, обеспечивающий максимум безопасности при движении.</p>
-                <p>Изображение, пройдя через системный блок управления 360 Bird View, на мониторе складывается в единую картинку, что позволяет видеть все, что происходит вокруг транспортного средства с высоты птичьего полёта.</p>
-            </div>
-            <div class="image" style="background-image:url('https://bgt-360.ru/image/step1.jpg');"></div>
-            <div class="image" style="background-image:url('https://bgt-360.ru/image/step2.jpg');"></div>
+<section>
+    <div class="container service-detail">
+        <div class="text">
+            <h2>Система Кругового Обзора 360 Bird View</h2>
+            <p>Представляет собой комплекс, обеспечивающий максимум безопасности при движении.</p>
+            <p>Изображение, пройдя через системный блок управления 360 Bird View, на мониторе складывается в единую картинку, что позволяет видеть все, что происходит вокруг транспортного средства с высоты птичьего полёта.</p>
         </div>
-    </section>
+        
+        <!-- Обернули картинки в контейнеры с подписями -->
+        <figure class="image-item">
+            <div class="image" style="background-image:url('https://bgt-360.ru/image/step1.jpg');"></div>
+            <figcaption>Реальное изображение с 4-х широкоугольных камер</figcaption>
+        </figure>
+
+        <figure class="image-item">
+            <div class="image" style="background-image:url('https://bgt-360.ru/image/step2.jpg');"></div>
+            <figcaption>Изображение после устранения искажений</figcaption>
+        </figure>
+
+        <figure class="image-item">
+            <div class="image" style="background-image:url('https://bgt-360.ru/image/step3.jpg');"></div>
+            <figcaption>Изображение после слияния швов</figcaption>
+        </figure>
+
+    </div>
+</section>
 
     <!-- НОВАЯ СЕКЦИЯ: ВИДЕОГАЛЕРЕЯ -->
     <section class="video-gallery-section" style="background: #000; padding: 60px 0;">
