@@ -28,7 +28,6 @@
         ],
 
         dvr: [
-            /* Пример: заменить на реальные видео/фото по видеорегистраторам */
             {
                 type: 'video',
                 id: '5YegGeQqz2w',
@@ -42,27 +41,22 @@
                 id: 'dQw4w9WgXcQ',
                 title: 'Chevrolet Tahoe — Система Кругового Обзора'
             }
-        ]
-         // Новый блок для слепых зон
-        blindspot: [
-            // Когда появятся видео/фото, раскомментируйте и добавьте ссылки:
-            /*
-            {
-                type: 'video',
-                id: 'ID_ВИДЕО_НА_YOUTUBE', // например: 'dQw4w9WgXcQ'
-                title: 'Установка контроля слепых зон на Toyota'
-            },
-            {
-                type: 'photo',
-                cover: 'ссылка_на_обложку.jpg',
-                title: 'Фотоальбом установки',
-                album: [
-                    'ссылка_на_обложку.jpg',
-                    'ссылка_на_фото_2.jpg'
-                ]
-            }
-            */
-        ]
+        ],
+
+        /* --- ПУСТЫЕ ГАЛЕРЕИ ДЛЯ НОВЫХ УСЛУГ --- */
+        blindspot: [],
+        carplay: [],
+        acoustic: [],
+        'dop-cameras': [],
+        'apple-tv': [],
+        'anti-theft': [],
+        'soft-close': [],
+        'power-steps': [],
+        'ambient-light': [],
+        soundproofing: [],
+        'extra-monitors': [],
+        'starry-sky': [],
+        'rear-monitors': []
     };
 
     /* ---------- РЕНДЕР ОДНОЙ КАРТОЧКИ ---------- */
@@ -120,10 +114,18 @@
         mounts.forEach(mount => {
             const name = mount.dataset.galleryName;
             const items = GALLERIES[name];
+            
             if (!items) {
                 console.warn(`[gallery] Нет конфигурации для "${name}"`);
                 return;
             }
+
+            // Если массив пустой, можно вообще скрыть секцию галереи, чтобы не было пустого черного блока
+            if (items.length === 0) {
+                mount.style.display = 'none';
+                return;
+            }
+
             mount.innerHTML = renderGallery(name, items);
         });
 
