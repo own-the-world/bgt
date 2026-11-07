@@ -1,6 +1,5 @@
 /* =========================================================
    LAYOUT.JS — общие блоки для всех страниц
-   Инжектит шапку, бургер-меню, FAB, форму, футер.
    ========================================================= */
 
 (function () {
@@ -12,7 +11,6 @@
     const ADDRESS_FULL = 'г. Владивосток, ул. Волнистая 12';
     const SCHEDULE = 'Работаем с 10:00 до 18:00';
 
-    /* ---------- СПИСОК УСЛУГ ---------- */
     const SERVICES_LIST = [
         'Русификация автомобилей',
         'Установка видеорегистраторов',
@@ -35,7 +33,6 @@
         'Другая услуга'
     ];
 
-    /* ---------- ШАПКА ---------- */
     function headerHTML() {
         return `
         <div class="container header-container">
@@ -54,7 +51,6 @@
         </div>`;
     }
 
-    /* ---------- БУРГЕР ---------- */
     function burgerHTML() {
         return `
         <button class="floating-burger" id="burgerToggle" aria-label="Открыть меню">
@@ -79,49 +75,46 @@
         </div>`;
     }
 
-function fabHTML() {
-    return `
-    <div class="fab-wrapper" id="fabMenu">
-        <div class="fab-actions">
+    function fabHTML() {
+        return `
+        <div class="fab-wrapper" id="fabMenu">
+            <div class="fab-actions">
+                <a href="https://wa.me/79024833907" target="_blank" rel="noopener" class="fab-btn" title="WhatsApp">
+                    <img src="images/whatsapp.png" alt="WhatsApp">
+                </a>
+                <a href="https://t.me/+79024833907" target="_blank" rel="noopener" class="fab-btn" title="Telegram">
+                    <img src="images/telegram.png" alt="Telegram">
+                </a>
+                <a href="https://max.ru/+79024833907" target="_blank" rel="noopener" class="fab-btn" title="MAX">
+                    <img src="images/max.png" alt="MAX">
+                </a>
+                <a href="tel:${PHONE}" class="fab-btn" title="Позвонить">
+                    <img src="images/phone.png" alt="Позвонить">
+                </a>
+            </div>
+            <button class="fab-toggle" id="fabToggle" aria-label="Связаться с нами">
+                <svg class="icon-open" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+                <svg class="icon-close" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>`;
+    }
 
-            <!-- WhatsApp -->
-            <a href="https://wa.me/79024833907" target="_blank" rel="noopener" class="fab-btn" title="WhatsApp">
-                <img src="images/whatsapp.png" alt="WhatsApp">
-            </a>
-
-            <!-- Telegram -->
-            <a href="https://t.me/+79024833907" target="_blank" rel="noopener" class="fab-btn" title="Telegram">
-                <img src="images/telegram.png" alt="Telegram">
-            </a>
-
-            <!-- MAX -->
-            <a href="https://max.ru/+79024833907" target="_blank" rel="noopener" class="fab-btn" title="MAX">
-                <img src="images/max.png" alt="MAX">
-            </a>
-
-            <!-- Позвонить -->
-            <a href="tel:${PHONE}" class="fab-btn" title="Позвонить">
-                <img src="images/phone.png" alt="Позвонить">
-            </a>
-        </div>
-        <button class="fab-toggle" id="fabToggle" aria-label="Связаться с нами">
-            <svg class="icon-open" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-            <svg class="icon-close" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-    </div>`;
-}
-
-    /* ---------- ФОРМА ---------- */
     function formHTML(service) {
-        const serviceField = service
-            ? `<input type="hidden" name="service" value="${service}">
-               <select name="service_display" disabled>
-                   <option selected>${service}</option>
-               </select>`
-            : `<select name="service" required>
-                   <option value="" disabled selected>Выберите услугу *</option>
-                   ${SERVICES_LIST.map(s => `<option value="${s}">${s}</option>`).join('')}
-               </select>`;
+        // Если service передан (страница услуги) - скрытое поле. Если нет (главная) - селект.
+        let serviceField = '';
+        if (service) {
+            serviceField = `
+                <input type="hidden" name="service" id="serviceHidden" value="${service}">
+                <select name="service_display" disabled>
+                    <option selected>${service}</option>
+                </select>`;
+        } else {
+            serviceField = `
+                <select name="service" id="serviceSelect" required>
+                    <option value="" disabled selected>Выберите услугу *</option>
+                    ${SERVICES_LIST.map(s => `<option value="${s}">${s}</option>`).join('')}
+                </select>`;
+        }
 
         return `
         <div class="container">
@@ -140,34 +133,28 @@ function fabHTML() {
         </div>`;
     }
 
-    /* ---------- ФУТЕР ---------- */
-    function footerHTML() {
-        return `
-        <div class="container">
-            <p>© ${new Date().getFullYear()} BGT — тюнинг и дооснащение автомобилей во Владивостоке</p>
-            <p style="margin-top:6px;">${ADDRESS_FULL} · <a href="tel:${PHONE}">${PHONE_DISPLAY}</a></p>
-            <div class="footer-messengers">
-                <a href="https://wa.me/79024833907" target="_blank" rel="noopener">WhatsApp</a>
-                <a href="https://t.me/+79024833907" target="_blank" rel="noopener">Telegram</a>
-                <a href="https://max.ru/+79024833907" target="_blank" rel="noopener">MAX</a>
-            </div>
-        </div>`;
-    }
-
-    /* ---------- ИНИЦИАЛИЗАЦИЯ ---------- */
     function mount() {
         const header = document.getElementById('site-header');
         if (header) header.innerHTML = headerHTML();
 
-        const footer = document.getElementById('site-footer');
-        if (footer) footer.innerHTML = footerHTML();
+        // Контейнеры для кнопок
+        let fab = document.getElementById('fab-mount');
+        if (!fab) {
+            fab = document.createElement('div');
+            fab.id = 'fab-mount';
+            document.body.appendChild(fab);
+        }
+        fab.innerHTML = fabHTML();
 
-        const fab = document.getElementById('fab-mount');
-        if (fab) fab.innerHTML = fabHTML();
+        let burger = document.getElementById('burger-mount');
+        if (!burger) {
+            burger = document.createElement('div');
+            burger.id = 'burger-mount';
+            document.body.appendChild(burger);
+        }
+        burger.innerHTML = burgerHTML();
 
-        const burger = document.getElementById('burger-mount');
-        if (burger) burger.innerHTML = burgerHTML();
-
+        // Форма
         const formMount = document.getElementById('contact-form-mount');
         if (formMount) {
             const service = formMount.dataset.service || '';
