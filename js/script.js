@@ -4,7 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* ==================== 1. FAB (Мессенджеры) ==================== */
+    /* ==================== 1. FAB ==================== */
     const fabMenu = document.getElementById('fabMenu');
     const fabToggle = document.getElementById('fabToggle');
 
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === mapModal) mapModal.classList.remove('open');
     });
 
-    /* ==================== 5. ОТПРАВКА ФОРМЫ В TELEGRAM ==================== */
+    /* ==================== 5. ОТПРАВКА ФОРМЫ ==================== */
     const form = document.getElementById('leadForm');
     if (form) {
         form.addEventListener('submit', async (e) => {
@@ -106,27 +106,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const name = form.name.value.trim();
             const phone = form.phone.value.trim();
             
-            // --- СБОР УСЛУГИ (ИСПРАВЛЕНО) ---
-            let serviceValue = '';
+            // Ищем селект (главная) или скрытое поле (услуги)
+            const serviceSelect = document.getElementById('serviceSelect');
+            const serviceHidden = document.getElementById('serviceHidden');
             
-            // Ищем селект, в котором можно выбирать (на главной)
-            const serviceSelect = form.querySelector('select[name="service_select"]');
-            // Ищем скрытое поле (на страницах услуг)
-            const serviceHidden = form.querySelector('input[name="service"]');
-            
-            if (serviceSelect) {
-                // Если это главная страница - берем выбранное значение
-                serviceValue = serviceSelect.value;
-                if (!serviceValue) {
-                    msg.textContent = 'Пожалуйста, выберите услугу из списка';
-                    msg.className = 'form-message error';
-                    return;
-                }
-            } else if (serviceHidden) {
-                // Если это страница услуги - берем из скрытого поля
-                serviceValue = serviceHidden.value;
+            let serviceValue = serviceSelect ? serviceSelect.value : (serviceHidden ? serviceHidden.value : '');
+
+            if (serviceSelect && !serviceValue) {
+                msg.textContent = 'Пожалуйста, выберите услугу';
+                msg.className = 'form-message error';
+                return;
             }
-            // --------------------------------
 
             if (!name || !phone) {
                 msg.textContent = 'Заполните имя и телефон';
@@ -142,14 +132,13 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const workerUrl = 'https://bgt-form-handler.magd6660545.workers.dev/';
                 
-                // Отправляем данные
                 const response = await fetch(workerUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         name: name,
                         phone: phone,
-                        service: serviceValue, // <-- Передаем сюда
+                        service: serviceValue,
                         message: form.message.value.trim()
                     })
                 });
@@ -173,4 +162,4 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-}); // <--- ВОТ ЭТА ЗАКРЫВАЮЩАЯ СКОБКА ПОЧИНИТ ВСЁ
+});
