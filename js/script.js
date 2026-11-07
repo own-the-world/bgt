@@ -4,7 +4,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* ==================== 1. FAB ==================== */
+    /* ==================== 1. FAB (Мессенджеры) ==================== */
     const fabMenu = document.getElementById('fabMenu');
     const fabToggle = document.getElementById('fabToggle');
 
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* ==================== 4. МОДАЛКА КАРТ (делегирование) ==================== */
+    /* ==================== 4. МОДАЛКА КАРТ ==================== */
     const mapModalHtml = `
         <div class="map-modal-overlay" id="mapModal">
             <div class="map-modal-content">
@@ -79,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const mapModal = document.getElementById('mapModal');
     const closeMapBtn = document.getElementById('closeMapBtn');
 
-    /* Делегирование: работает для ВСЕХ ссылок с классом .js-address-link */
     document.body.addEventListener('click', (e) => {
         const link = e.target.closest('.js-address-link');
         if (!link) return;
@@ -96,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === mapModal) mapModal.classList.remove('open');
     });
 
-    /* ==================== 5. ОТПРАВКА ФОРМЫ ==================== */
+    /* ==================== 5. ОТПРАВКА ФОРМЫ В TELEGRAM ==================== */
     const form = document.getElementById('leadForm');
     if (form) {
         form.addEventListener('submit', async (e) => {
@@ -107,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const name = form.name.value.trim();
             const phone = form.phone.value.trim();
             
-            // Сбор данных об услуге (для главной страницы и внутренних)
             let serviceValue = '';
             const serviceSelect = form.querySelector('select[name="service_select"]');
             const serviceHidden = form.querySelector('input[name="service"]');
@@ -129,12 +127,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Блокируем кнопку на время отправки
             submitBtn.disabled = true;
             submitBtn.textContent = 'Отправка...';
+            msg.textContent = '';
+            msg.className = 'form-message';
 
             try {
-                const response = await fetch('https://bgt-form-handler.magd6660545.workers.dev/', { // <-- Вставьте URL воркера
+                const workerUrl = 'https://bgt-form-handler.magd6660545.workers.dev/';
+                
+                const response = await fetch(workerUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -152,16 +153,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     msg.className = 'form-message success';
                     form.reset();
                 } else {
-                    throw new Error('Ошибка сервера');
+                    throw new Error(result.error || 'Ошибка сервера');
                 }
             } catch (error) {
-                console.error(error);
+                console.error('Ошибка отправки:', error);
                 msg.textContent = 'Ошибка отправки. Попробуйте позже или позвоните нам.';
                 msg.className = 'form-message error';
             } finally {
-                // Возвращаем кнопку в исходное состояние
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Отправить заявку';
             }
         });
     }
+}); // <--- ВОТ ЭТА ЗАКРЫВАЮЩАЯ СКОБКА ПОЧИНИТ ВСЁ
