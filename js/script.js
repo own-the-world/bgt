@@ -99,11 +99,29 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==================== 5. ОТПРАВКА ФОРМЫ ==================== */
     const form = document.getElementById('leadForm');
     if (form) {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const msg = document.getElementById('formMessage');
+            const submitBtn = form.querySelector('button[type="submit"]');
+            
             const name = form.name.value.trim();
             const phone = form.phone.value.trim();
+            
+            // Сбор данных об услуге (для главной страницы и внутренних)
+            let serviceValue = '';
+            const serviceSelect = form.querySelector('select[name="service_select"]');
+            const serviceHidden = form.querySelector('input[name="service"]');
+            
+            if (serviceSelect) {
+                serviceValue = serviceSelect.value;
+                if (!serviceValue) {
+                    msg.textContent = 'Пожалуйста, выберите услугу';
+                    msg.className = 'form-message error';
+                    return;
+                }
+            } else if (serviceHidden) {
+                serviceValue = serviceHidden.value;
+            }
 
             if (!name || !phone) {
                 msg.textContent = 'Заполните имя и телефон';
@@ -111,24 +129,39 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Проверка выбора услуги (только на главной, где select активен)
-            const serviceSelect = form.querySelector('select[name="service"]:not([disabled])');
-            if (serviceSelect && !serviceSelect.value) {
-                msg.textContent = 'Выберите услугу';
+            // Блокируем кнопку на время отправки
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправка...';
+
+            try {
+                const response = await fetch('https://bgt-form-handler.magd6660545.workers.dev/', { // <-- Вставьте URL воркера
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: name,
+                        phone: phone,
+                        service: serviceValue,
+                        message: form.message.value.trim()
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    msg.textContent = 'Спасибо! Заявка отправлена.';
+                    msg.className = 'form-message success';
+                    form.reset();
+                } else {
+                    throw new Error('Ошибка сервера');
+                }
+            } catch (error) {
+                console.error(error);
+                msg.textContent = 'Ошибка отправки. Попробуйте позже или позвоните нам.';
                 msg.className = 'form-message error';
-                return;
+            } finally {
+                // Возвращаем кнопку в исходное состояние
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Отправить заявку';
             }
-
-            const serviceValue = serviceSelect
-                ? serviceSelect.value
-                : (form.querySelector('input[name="service"]')?.value || '');
-            
-            console.log('Отправка заявки:', { name, phone, service: serviceValue });
-
-            /* Здесь — ваш способ отправки (Telegram Bot API, fetch и т.п.) */
-            msg.textContent = 'Спасибо! Заявка отправлена.';
-            msg.className = 'form-message success';
-            form.reset();
         });
     }
-});
