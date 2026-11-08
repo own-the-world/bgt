@@ -27,19 +27,29 @@
             }
         ],
 
-        dvr: [
-            {
-                type: 'video',
-                id: '5YegGeQqz2w',
-                title: 'Пример установки видеорегистратора в штатное место'
-            }
-        ],
+        dvr: [],
 
         view360: [
             {
                 type: 'video',
-                id: 'dQw4w9WgXcQ',
-                title: 'Chevrolet Tahoe — Система Кругового Обзора'
+                id: 'sZdCcDXVOoU',
+                title: 'в Porsche Cayenne 3G 2017+ поставили систему кругового обзора 360 в авто, где его изначально не было'
+            },
+            {
+                type: 'photo',
+                cover: 'https://bgt-360.ru/upload/images/CAY/EvpqVa1UWWFoCe3cDqdsMcUkLBc-1920.jpg',
+                title: 'Круговой обзор Porsche Cayenne',
+                album: [
+                    'https://bgt-360.ru/upload/images/CAY/EvpqVa1UWWFoCe3cDqdsMcUkLBc-1920.jpg',
+                    'https://bgt-360.ru/upload/images/CAY/33.jpg',
+                    'https://bgt-360.ru/upload/images/CAY/21.jpg',
+                    'https://bgt-360.ru/upload/images/CAY/vUoiZSjBeVITsKAB40CQjhYK9Lc-1920.jpg',
+                    'https://bgt-360.ru/upload/images/CAY/Jiu7OE02PrNTKWhBTuzacCHY7GE-1920.jpg',
+                    'https://bgt-360.ru/upload/images/CAY/LtKFbIhAhEvXhFJnRCpH7_FDvS4-1920.jpg',
+                    'https://bgt-360.ru/upload/images/CAY/rL7bSApHvK_nP6-a_bx1I8I0RYA-1920.jpg',
+                    'https://bgt-360.ru/upload/images/CAY/XoRWyhbY-Ypzf8G07D8WU3RvcpE-1920.jpg',
+                    'https://bgt-360.ru/upload/images/CAY/ZTgU6zGNWUInZe8tBYatpqK7rcw-1920.jpg'                   
+                ]
             }
         ],
 
