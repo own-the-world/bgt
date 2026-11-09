@@ -309,7 +309,48 @@
                 title: 'Контурная атмосферная подсветка салона а/м Нива'
             }
         ],
-        soundproofing: [],
+        soundproofing: [
+            {
+                type: 'video',
+                id: 'IrWobc3MEsM',
+                title: 'Mercedes GLS, GLE 167 - шумоизоляция'
+            },
+            {
+                type: 'video',
+                id: 'h5GW2YFLIfE',
+                title: 'Lexus LX 450D / 570 - тотальная шумоизоляция'
+            },
+            {
+                type: 'video',
+                id: 'tr1bUMnpBKk',
+                title: 'Escalade V - шумоизоляция авто'
+            },
+            {
+                type: 'video',
+                id: 'pkQ4Q4XYCG0',
+                title: 'автомобильная шумоизоляция бмв'
+            },
+            {
+                type: 'video',
+                id: 'oFP4wNB_mZU',
+                title: 'V Class, Vito W447 - шумоизоляция, комплексная защита от шума'
+            },
+            {
+                type: 'short',
+                id: 'AxlqLLyhgTs',
+                title: 'Жидкая шумоизоляция Cadillac Escalade 5'
+            },
+            {
+                type: 'video',
+                id: 'QR0Wc0SxIIc',
+                title: 'Шумоизоляция Toyota LC300'
+            },
+            {
+                type: 'video',
+                id: '5aVLqoyogyo',
+                title: 'Zeekr 009 - шумоизоляция тотальная и бескомпромиссная'
+            }
+        ],
         'extra-monitors': [],
         'starry-sky': [],
         'rear-monitors': []
