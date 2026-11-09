@@ -165,6 +165,26 @@
                 type: 'video',
                 id: 'skjIN49gHZ4',
                 title: 'Комплексная защита двигателей с помощью корректоров от БГТ'
+            },
+            {
+                type: 'video',
+                id: 'xQKjS32Uj34',
+                title: 'Топливный корректор в бензин для Cadillac Escalade'
+            },
+            {
+                type: 'video',
+                id: 'a1scnqrdT5s',
+                title: 'Топливный корректор на примере Дизельного Hyundai Starex'
+            },
+            {
+                type: 'video',
+                id: 'IKH3VmlhxMA',
+                title: 'Топливный корректор Range Rover Sport 5,0 Бензин'
+            },
+            {
+                type: 'video',
+                id: 'yrPiNDBrj40',
+                title: 'Масляный корретор в двигатели БМВ дизельный и бензиновый'
             }
         ],
 
