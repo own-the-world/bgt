@@ -60,16 +60,7 @@
             <div class="burger-menu-panel">
                 <ul class="burger-nav-list">
                     <li><a href="index.html">Главная</a></li>
-                    <li><a href="#">Преимущества</a></li>
-                    <li><a href="#">Наши работы</a></li>
-                    <li><a href="#">Наши услуги</a></li>
-                    <li><a href="#">Наши соцсети</a></li>
-                    <li class="burger-address-item">
-                        <a href="#" class="js-address-link">${ADDRESS_FULL}</a>
-                    </li>
-                    <li><a href="#">Отзывы знаменитостей</a></li>
                     <li><a href="#contact-form">Оставить заявку</a></li>
-                    <li><a href="#">Блог</a></li>
                 </ul>
             </div>
         </div>`;
