@@ -261,7 +261,43 @@
                 title: 'ДОВОДЧИКИ ДВЕРЕЙ на авто Range Rover Evoque'
             }
         ],
-        'power-steps': [],
+        'power-steps': [
+            {
+                type: 'video',
+                id: 'yySOUlKeJwI',
+                title: 'ВЫДВИЖНЫЕ ЭЛЕКТРОПОРОГИ на Mercedes G-class'
+            },
+            {
+                type: 'video',
+                id: '',
+                title: ''
+            },
+            {
+                type: 'video',
+                id: '',
+                title: ''
+            },
+            {
+                type: 'video',
+                id: '',
+                title: ''
+            },
+            {
+                type: 'video',
+                id: '',
+                title: ''
+            },
+            {
+                type: 'video',
+                id: '',
+                title: ''
+            },
+            {
+                type: 'video',
+                id: '',
+                title: ''
+            }
+        ],
         'ambient-light': [],
         soundproofing: [],
         'extra-monitors': [],
