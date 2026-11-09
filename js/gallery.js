@@ -1,6 +1,11 @@
 /* =========================================================
    GALLERY.JS — конфиги галерей + рендер + инициализация GLightbox
    На странице: <div class="gallery-mount" data-gallery-name="...">
+   
+   Типы карточек:
+   - type: 'video'  → YouTube (id = 11-символьный id)
+   - type: 'vk'     → VK Video (embedUrl = ссылка из кода встраивания)
+   - type: 'photo'  → фотоальбом (cover + album[])
    ========================================================= */
 
 (function () {
@@ -48,12 +53,11 @@
                     'https://bgt-360.ru/upload/images/CAY/LtKFbIhAhEvXhFJnRCpH7_FDvS4-1920.jpg',
                     'https://bgt-360.ru/upload/images/CAY/rL7bSApHvK_nP6-a_bx1I8I0RYA-1920.jpg',
                     'https://bgt-360.ru/upload/images/CAY/XoRWyhbY-Ypzf8G07D8WU3RvcpE-1920.jpg',
-                    'https://bgt-360.ru/upload/images/CAY/ZTgU6zGNWUInZe8tBYatpqK7rcw-1920.jpg'                   
+                    'https://bgt-360.ru/upload/images/CAY/ZTgU6zGNWUInZe8tBYatpqK7rcw-1920.jpg'
                 ]
             }
         ],
 
-        /* --- ПУСТЫЕ ГАЛЕРЕИ ДЛЯ НОВЫХ УСЛУГ --- */
         blindspot: [
             {
                 type: 'video',
@@ -96,6 +100,7 @@
                 title: 'Система Контроля слепых зон с индикаторами в передние стойки'
             }
         ],
+
         carplay: [
             {
                 type: 'video',
@@ -143,6 +148,17 @@
                 title: 'Volvo - CarPlay'
             }
         ],
+
+        /* --- ПРИМЕР С VK VIDEO --- */
+        'fuel-corrector': [
+            {
+                type: 'video',
+                id: 'skjIN49gHZ4',
+                title: 'Комплексная защита двигателей с помощью корректоров от БГТ'
+            }
+        ],
+
+        /* --- ПУСТЫЕ ГАЛЕРЕИ ДЛЯ НОВЫХ УСЛУГ --- */
         acoustic: [],
         'dop-cameras': [],
         'apple-tv': [],
@@ -171,6 +187,23 @@
             </a>`;
     }
 
+    function vkCard(item, galleryName) {
+        const cover = item.cover || 'images/vk-placeholder.jpg';
+        return `
+            <a href="${item.embedUrl}"
+               class="video-card glightbox"
+               data-gallery="${galleryName}"
+               data-type="iframe"
+               data-width="960px"
+               data-height="540px">
+                <div class="video-thumb">
+                    <img src="${cover}" alt="${item.title}" loading="lazy">
+                    <div class="play-icon">▶</div>
+                </div>
+                <p class="video-title">${item.title}</p>
+            </a>`;
+    }
+
     function photoCard(item, galleryName) {
         const [cover, ...rest] = item.album;
         const hidden = rest.map(src =>
@@ -192,11 +225,11 @@
     /* ---------- РЕНДЕР ВСЕЙ ГАЛЕРЕИ ---------- */
     function renderGallery(name, items) {
         const galleryName = `gallery-${name}`; /* изоляция между страницами */
-        const cards = items.map(item =>
-            item.type === 'video'
-                ? videoCard(item, galleryName)
-                : photoCard(item, galleryName)
-        ).join('');
+        const cards = items.map(item => {
+            if (item.type === 'video') return videoCard(item, galleryName);
+            if (item.type === 'vk')    return vkCard(item, galleryName);
+            return photoCard(item, galleryName);
+        }).join('');
 
         return `
             <div class="container">
@@ -211,13 +244,13 @@
         mounts.forEach(mount => {
             const name = mount.dataset.galleryName;
             const items = GALLERIES[name];
-            
+
             if (!items) {
                 console.warn(`[gallery] Нет конфигурации для "${name}"`);
                 return;
             }
 
-            // Если массив пустой, можно вообще скрыть секцию галереи, чтобы не было пустого черного блока
+            // Если массив пустой — скрываем секцию, чтобы не было пустого чёрного блока
             if (items.length === 0) {
                 mount.style.display = 'none';
                 return;
@@ -226,7 +259,8 @@
             mount.innerHTML = renderGallery(name, items);
         });
 
-        /* GLightbox — после рендера карточек */
+        /* GLightbox — после рендера карточек.
+           data-type="iframe" на ссылках VK заставит GLightbox открыть их в iframe. */
         if (typeof GLightbox !== 'undefined') {
             GLightbox({
                 selector: '.glightbox',
