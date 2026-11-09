@@ -776,3 +776,9 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     padding: 6px !important; /* Подберите 8-12px, чтобы сравнялось с трубкой */
     box-sizing: border-box !important;
 }
+
+/* Стили для карточек с вертикальными видео */
+.video-card[data-height="711px"] .video-thumb {
+    aspect-ratio: 9 / 16; /* Делает блок вертикальным */
+    height: auto;
+}
