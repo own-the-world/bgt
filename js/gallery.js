@@ -472,7 +472,45 @@
             }
         ], 
 
-        'bmw-upgrade': [] // <--- Теперь это отдельная галерея
+        'bmw-upgrade': [
+            {
+                type: 'video',
+                id: 'rElNj9-rT_0',
+                title: 'Русификация БМВ на примере BMW XM'
+            },
+            {
+                type: 'video',
+                id: 'p4RDxtyXbCc',
+                title: 'BMW X5 - ставим комфортные сидения(в ходе работ)'
+            },
+            {
+                type: 'video',
+                id: '',
+                title: ''
+            },
+            {
+                type: 'video',
+                id: '',
+                title: ''
+            },
+            {
+                type: 'video',
+                id: '',
+                title: ''
+            }
+        ],
+            {
+                type: 'photo',
+                cover: 'https://bgt-nebo.ru/upload/image/a030a4eed9f30f4ed60b674d758b40a3/big.jpg',
+                title: 'Установим систему «Звёздное небо» в салон Вашего автомобиля',
+                album: [
+                    'https://bgt-nebo.ru/upload/image/a030a4eed9f30f4ed60b674d758b40a3/big.jpg',
+                    'https://bgt-nebo.ru/upload/image/b338e68742facafb619efc117a322dd0/big.jpg',
+                    'https://bgt-nebo.ru/upload/image/b89288a3f838c6bfa6a2a4a68e1ebe3e/big.jpg',
+                    'https://bgt-nebo.ru/upload/image/f0d63ccdfe6b45a0cdccb5211e41bc20/big.jpg',
+                    'https://bgt-nebo.ru/upload/image/c9551e6b21504aba57f542a6f0aa51cb/big.jpg'
+                ]
+            }
     };
 
     /* ---------- РЕНДЕР ОДНОЙ КАРТОЧКИ ---------- */
