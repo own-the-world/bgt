@@ -94,9 +94,55 @@
                 type: 'video',
                 id: '4OcQ_NlnAVE',
                 title: 'Система Контроля слепых зон с индикаторами в передние стойки'
-            },
+            }
         ],
-        carplay: [],
+        carplay: [
+            {
+                type: 'video',
+                id: 'ezCXBkvNiis',
+                title: 'BMW - Apple CarPlay'
+            },
+            {
+                type: 'video',
+                id: 'S0Iiypzwmzw',
+                title: 'Bentley - Apple CarPlay'
+            },
+            {
+                type: 'video',
+                id: 'qwAJcuFJO84',
+                title: 'Infiniti - Apple CarPlay'
+            },
+            {
+                type: 'video',
+                id: 'pVcfvc99K_I',
+                title: 'Audi Q7 2-nd Gen - Carplay'
+            },
+            {
+                type: 'video',
+                id: '3D8ni1AC1nE',
+                title: 'Lexus LX 450D/570 - Apple CarPlay в штатную мультимедиа систему'
+            },
+            {
+                type: 'video',
+                id: '28E57crdSto',
+                title: 'Mercedes G-Class 2013-2016 - доп мультимедиа'
+            },
+            {
+                type: 'video',
+                id: 'sy27ZRuuH4A',
+                title: 'GLS, GLE, W447 - Apple CarPlay c сенсорным управлением'
+            },
+            {
+                type: 'video',
+                id: 'cRIw1jIZuXQ',
+                title: 'Mercedes S-Class W221 - Apple CarPlay'
+            },
+            {
+                type: 'video',
+                id: 'y5nNIeFGSME',
+                title: 'Volvo - CarPlay'
+            }
+        ],
         acoustic: [],
         'dop-cameras': [],
         'apple-tv': [],
