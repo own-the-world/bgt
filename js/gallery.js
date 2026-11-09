@@ -229,7 +229,38 @@
                 title: 'Противоугонная система C-Asper на Mercedes-Benz E-Class W212.'
             }
         ],
-        'soft-close': [],
+        'soft-close': [
+            {
+                type: 'video',
+                id: 'i9jfb3SQa1A',
+                title: 'Доводчики для закрытия дверей на примере Lexus LX570'
+            },
+            {
+                type: 'video',
+                id: 'WwDLaiJjgAc',
+                title: 'Доводчики дверей на авто Genesis GV80'
+            },
+            {
+                type: 'video',
+                id: 'PkM9ThvjMcw',
+                title: 'Mercedes GLS W167 - доводчики на двери / присоски дверей / дотяжки на двери'
+            },
+            {
+                type: 'video',
+                id: 'slqKCJ--m4s',
+                title: 'Honda CRV 5 gen - доводчики / присоски на двери'
+            },
+            {
+                type: 'video',
+                id: 'cBjvaEiNC5Q',
+                title: 'Honda Pilot(3G) - доводчики / присоски на двери'
+            },
+            {
+                type: 'video',
+                id: 'e8aQ4YR0j5A',
+                title: 'ДОВОДЧИКИ ДВЕРЕЙ на авто Range Rover Evoque'
+            }
+        ],
         'power-steps': [],
         'ambient-light': [],
         soundproofing: [],
