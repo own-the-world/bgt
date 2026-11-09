@@ -469,7 +469,8 @@
                 type: 'video',
                 id: 'D9QrqswD1eQ',
                 title: 'Мониторы снимаемые для задних пассажиров на примере VW Touareg'
-            }
+            },
+           'bmw-upgrade': []
         ]
     };
 
