@@ -54,7 +54,48 @@
         ],
 
         /* --- ПУСТЫЕ ГАЛЕРЕИ ДЛЯ НОВЫХ УСЛУГ --- */
-        blindspot: [],
+        blindspot: [
+            {
+                type: 'video',
+                id: 'YM4Q5IP4I9E',
+                title: 'Система контроля слепых зон на примере Hummer H2'
+            },
+            {
+                type: 'video',
+                id: 'ka0FIhpAcIw',
+                title: 'Система контроля слепых зон для любого авто на примере Bentley'
+            },
+            {
+                type: 'video',
+                id: '3pXXlCAeGO4',
+                title: 'СИСТЕМА КОНТРОЛЯ СЛЕПЫХ ЗОН | BGT WorkShop'
+            },
+            {
+                type: 'video',
+                id: 'K0vC-37mzIQ',
+                title: 'слепые зоны ставим на Rolls Royce'
+            },
+            {
+                type: 'video',
+                id: 'EauivRkyQLU',
+                title: 'СИСТЕМА КОНТРОЛЯ СЛЕПЫХ ЗОН на примере BMW X7'
+            },
+            {
+                type: 'video',
+                id: '2ZmxlErKvmc',
+                title: 'СИСТЕМА КОНТРОЛЯ СЛЕПЫХ ЗОН - сравнение вариантов'
+            },
+            {
+                type: 'video',
+                id: 'c0-hMJIfRWc',
+                title: 'Контроль слепых зон - дополнительно установленная система'
+            },
+            {
+                type: 'video',
+                id: '4OcQ_NlnAVE',
+                title: 'Система Контроля слепых зон с индикаторами в передние стоёки'
+            },
+        ],
         carplay: [],
         acoustic: [],
         'dop-cameras': [],
