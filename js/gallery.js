@@ -265,8 +265,7 @@
                 type: 'short', // Теперь это Shorts!
                 id: 'yySOUlKeJwI',
                 title: 'ВЫДВИЖНЫЕ ЭЛЕКТРОПОРОГИ на Mercedes G-class'
-            },
-            // Остальные пустые строки удалил, чтобы не было битых карточек
+            }
         ],
         'ambient-light': [],
         soundproofing: [],
