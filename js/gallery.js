@@ -351,7 +351,30 @@
                 title: 'Zeekr 009 - шумоизоляция тотальная и бескомпромиссная'
             }
         ],
-        'extra-monitors': [],
+        'extra-monitors': [
+            {
+                type: 'photo',
+                cover: 'https://a1.drive-data.ru/saAAAgDZTeA-960.jpg',
+                title: 'Доп мультимедиа для ЛЮБОГО авто!',
+                album: [
+                    'https://a1.drive-data.ru/saAAAgDZTeA-960.jpg',
+                    'https://a1.drive-data.ru/omAAAgDZTeA-960.jpg',
+                    'https://a1.drive-data.ru/hWAAAgDZTeA-960.jpg',
+                    'https://a1.drive-data.ru/Q2AAAgDZTeA-960.jpg',
+                    'https://a1.drive-data.ru/xWAAAgDZTeA-960.jpg',
+                    'https://a1.drive-data.ru/E2AAAgDZTeA-960.jpg',
+                    'https://a1.drive-data.ru/JOAAAgDZTeA-960.jpg',
+                    'https://a1.drive-data.ru/dWAAAgDZTeA-960.jpg',
+                    'https://a1.drive-data.ru/TuAAAgDZTeA-960.jpg',
+                    'https://a1.drive-data.ru/ReAAAgDZTeA-960.jpg'
+                ]
+            },
+            {
+                type: 'video',
+                id: 'W0zyfxuCLgI',
+                title: 'Mercedes W140 - современная мультимедиа в легендарный авто!'
+            },
+        ],
         'starry-sky': [],
         'rear-monitors': []
     };
