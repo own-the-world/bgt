@@ -189,9 +189,29 @@
         ],
 
         /* --- ПУСТЫЕ ГАЛЕРЕИ ДЛЯ НОВЫХ УСЛУГ --- */
-        acoustic: [],
+        acoustic: [
+            {
+                type: 'video',
+                id: 'S6mFrUAYAhc',
+                title: 'Апгрейд Mercedes GLS (комплексное дооснащение)'
+            }
+        ],
         'dop-cameras': [],
-        'apple-tv': [],
+        'apple-tv': [
+            {
+                type: 'photo',
+                cover: 'https://a1.drive-data.ru/jQAAAgDJ2-A-960.jpg',
+                title: 'Apple TV в оригинальные мультимедиа системы разных автомобилей',
+                album: [
+                    'https://a1.drive-data.ru/jQAAAgDJ2-A-960.jpg'
+                ]
+            }
+            {
+                type: 'video',
+                id: 'sxm7GSJd69s',
+                title: 'Apple TV и iPhone Mirrorlink на Lexus LS 2017+ (на оригинальные мониторы сзади)'
+            }
+        ],
         'anti-theft': [],
         'soft-close': [],
         'power-steps': [],
