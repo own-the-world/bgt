@@ -270,6 +270,31 @@
                 type: 'short',
                 id: 'eh6BkDvQ-Hs',
                 title: 'Land Rover Defender - выезжающие пороги'
+            },
+            {
+                type: 'short',
+                id: 'Rch0O7YSl1A',
+                title: 'Audi q7 1 Gen - выезжающие электропороги \ автоматические электропороги'
+            },
+            {
+                type: 'video',
+                id: 'AssudCXVv50',
+                title: 'ЭЛЕКТРОПОРОГИ - куда устанавливать лапы подъемника?'
+            },
+            {
+                type: 'video',
+                id: 'IwB2nP5M0ZU',
+                title: 'Выезжающие пороги - безопасность - препятствие сверху'
+            },
+            {
+                type: 'video',
+                id: '6b8Xm19vqKA',
+                title: 'Выезжающие пороги - безопасность - препятствие снизу'
+            },
+            {
+                type: 'video',
+                id: 'UhGH2fTvr7g',
+                title: 'Выезжающие пороги X7 - проверка на прочность'
             }
         ],
         'ambient-light': [],
