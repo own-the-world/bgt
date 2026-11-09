@@ -263,22 +263,27 @@
     <script src="js/gallery.js"></script>
     <script src="js/script.js"></script>
 
-    <!-- Скрипт для работы аккордеона -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const acc = document.getElementsByClassName("accordion-btn");
-            for (let i = 0; i < acc.length; i++) {
-                acc[i].addEventListener("click", function() {
-                    this.classList.toggle("active");
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const acc = document.getElementsByClassName("accordion-btn");
+        for (let i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                // Проверяем, был ли этот пункт уже открыт
+                const isActive = this.classList.contains("active");
+
+                // 1. Сначала закрываем ВСЕ открытые пункты
+                for (let j = 0; j < acc.length; j++) {
+                    acc[j].classList.remove("active");
+                    acc[j].nextElementSibling.style.maxHeight = null;
+                }
+
+                // 2. Если кликнули на закрытый пункт — открываем его
+                if (!isActive) {
+                    this.classList.add("active");
                     const panel = this.nextElementSibling;
-                    if (panel.style.maxHeight) {
-                        panel.style.maxHeight = null;
-                    } else {
-                        panel.style.maxHeight = panel.scrollHeight + "px";
-                    } 
-                });
-            }
-        });
-    </script>
-</body>
-</html>
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+    });
+</script>
