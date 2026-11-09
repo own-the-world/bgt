@@ -262,9 +262,14 @@
         ],
         'power-steps': [
             {
-                type: 'short', // Теперь это Shorts!
+                type: 'short',
                 id: 'yySOUlKeJwI',
                 title: 'ВЫДВИЖНЫЕ ЭЛЕКТРОПОРОГИ на Mercedes G-class'
+            },
+            {
+                type: 'short',
+                id: 'eh6BkDvQ-Hs',
+                title: 'Land Rover Defender - выезжающие пороги'
             }
         ],
         'ambient-light': [],
