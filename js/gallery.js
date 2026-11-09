@@ -3,8 +3,8 @@
    На странице: <div class="gallery-mount" data-gallery-name="...">
    
    Типы карточек:
-   - type: 'video'  → YouTube (id = 11-символьный id)
-   - type: 'vk'     → VK Video (embedUrl = ссылка из кода встраивания)
+   - type: 'video'  → YouTube (обычное видео, 16:9)
+   - type: 'short'  → YouTube Shorts (вертикальное видео, 9:16)
    - type: 'photo'  → фотоальбом (cover + album[])
    ========================================================= */
 
@@ -188,7 +188,6 @@
             }
         ],
 
-        /* --- ПУСТЫЕ ГАЛЕРЕИ ДЛЯ НОВЫХ УСЛУГ --- */
         acoustic: [
             {
                 type: 'video',
@@ -263,40 +262,11 @@
         ],
         'power-steps': [
             {
-                type: 'video',
+                type: 'short', // Теперь это Shorts!
                 id: 'yySOUlKeJwI',
                 title: 'ВЫДВИЖНЫЕ ЭЛЕКТРОПОРОГИ на Mercedes G-class'
             },
-            {
-                type: 'video',
-                id: '',
-                title: ''
-            },
-            {
-                type: 'video',
-                id: '',
-                title: ''
-            },
-            {
-                type: 'video',
-                id: '',
-                title: ''
-            },
-            {
-                type: 'video',
-                id: '',
-                title: ''
-            },
-            {
-                type: 'video',
-                id: '',
-                title: ''
-            },
-            {
-                type: 'video',
-                id: '',
-                title: ''
-            }
+            // Остальные пустые строки удалил, чтобы не было битых карточек
         ],
         'ambient-light': [],
         soundproofing: [],
@@ -306,6 +276,8 @@
     };
 
     /* ---------- РЕНДЕР ОДНОЙ КАРТОЧКИ ---------- */
+    
+    // Обычное видео YouTube (16:9)
     function videoCard(item, galleryName) {
         const thumb = `https://img.youtube.com/vi/${item.id}/hqdefault.jpg`;
         return `
@@ -320,23 +292,26 @@
             </a>`;
     }
 
-    function vkCard(item, galleryName) {
-        const cover = item.cover || 'images/vk-placeholder.jpg';
+    // YouTube Shorts (вертикальное видео 9:16)
+    function shortCard(item, galleryName) {
+        // У шортсов превью тоже доступно по стандартному пути
+        const thumb = `https://img.youtube.com/vi/${item.id}/hqdefault.jpg`;
         return `
-            <a href="${item.embedUrl}"
+            <a href="https://www.youtube.com/shorts/${item.id}"
                class="video-card glightbox"
                data-gallery="${galleryName}"
-               data-type="iframe"
-               data-width="960px"
-               data-height="540px">
+               data-type="video"
+               data-width="400px"
+               data-height="711px">
                 <div class="video-thumb">
-                    <img src="${cover}" alt="${item.title}" loading="lazy">
+                    <img src="${thumb}" alt="${item.title}" loading="lazy">
                     <div class="play-icon">▶</div>
                 </div>
                 <p class="video-title">${item.title}</p>
             </a>`;
     }
 
+    // Фотоальбом
     function photoCard(item, galleryName) {
         const [cover, ...rest] = item.album;
         const hidden = rest.map(src =>
@@ -357,10 +332,10 @@
 
     /* ---------- РЕНДЕР ВСЕЙ ГАЛЕРЕИ ---------- */
     function renderGallery(name, items) {
-        const galleryName = `gallery-${name}`; /* изоляция между страницами */
+        const galleryName = `gallery-${name}`;
         const cards = items.map(item => {
             if (item.type === 'video') return videoCard(item, galleryName);
-            if (item.type === 'vk')    return vkCard(item, galleryName);
+            if (item.type === 'short') return shortCard(item, galleryName);
             return photoCard(item, galleryName);
         }).join('');
 
@@ -383,7 +358,7 @@
                 return;
             }
 
-            // Если массив пустой — скрываем секцию, чтобы не было пустого чёрного блока
+            // Скрываем пустые секции
             if (items.length === 0) {
                 mount.style.display = 'none';
                 return;
@@ -392,8 +367,6 @@
             mount.innerHTML = renderGallery(name, items);
         });
 
-        /* GLightbox — после рендера карточек.
-           data-type="iframe" на ссылках VK заставит GLightbox открыть их в iframe. */
         if (typeof GLightbox !== 'undefined') {
             GLightbox({
                 selector: '.glightbox',
