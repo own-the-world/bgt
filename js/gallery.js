@@ -149,8 +149,18 @@
             }
         ],
 
-        /* --- ПРИМЕР С VK VIDEO --- */
         'fuel-corrector': [
+            {
+                type: 'photo',
+                cover: 'https://bgtworkshop.ru/upload/image/0d86b66e572c076d6d5965511666f6bf/picture.jpg',
+                title: 'Топливный корректор БГТ',
+                album: [
+                    'https://bgtworkshop.ru/upload/image/0d86b66e572c076d6d5965511666f6bf/picture.jpg',
+                    'https://bgtworkshop.ru/upload/image/d072283cd6eb3b163da8af6f3f44d6f4/picture.jpg',
+                    'https://bgtworkshop.ru/upload/image/944250dd4d8a17230c7251fab9757883/picture.jpg',
+                    'https://bgtworkshop.ru/upload/image/8468360830d03d2346656b961ff517df/picture.jpg'
+                ]
+            }
             {
                 type: 'video',
                 id: 'skjIN49gHZ4',
