@@ -297,7 +297,18 @@
                 title: 'Выезжающие пороги X7 - проверка на прочность'
             }
         ],
-        'ambient-light': [],
+        'ambient-light': [
+            {
+                type: 'video',
+                id: '3m22s8Lr788',
+                title: 'G-class - контурная атмосферная подсветка салона'
+            },
+            {
+                type: 'video',
+                id: 'fton-h6VmiQ',
+                title: 'Контурная атмосферная подсветка салона а/м Нива'
+            }
+        ],
         soundproofing: [],
         'extra-monitors': [],
         'starry-sky': [],
