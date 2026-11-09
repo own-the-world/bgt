@@ -212,7 +212,23 @@
                 title: 'Apple TV и iPhone Mirrorlink на Lexus LS 2017+ (на оригинальные мониторы сзади)'
             }
         ],
-        'anti-theft': [],
+        'anti-theft': [
+            {
+                type: 'video',
+                id: 'WfuYAFM-Nt0',
+                title: 'Nissan Patrol - противоугонка C-Asper'
+            },
+            {
+                type: 'video',
+                id: 'Fa7SFVI7ZJI',
+                title: 'Lexus LX570 - противоугонка C-Asper'
+            },
+            {
+                type: 'video',
+                id: 'WyjMXq_UsRo',
+                title: 'Противоугонная система C-Asper на Mercedes-Benz E-Class W212.'
+            }
+        ],
         'soft-close': [],
         'power-steps': [],
         'ambient-light': [],
