@@ -473,6 +473,20 @@
         ], 
 
         'bmw-upgrade': [
+            // 1. Фотоальбом (появится первым в галерее)
+            {
+                type: 'photo',
+                cover: 'https://bgtworkshop.ru/upload/image/ecbf1a55206e3d1f5fc9a24218d217bb/picture.jpg',
+                title: 'Установка и кодирование NBT EVO с CarPlay на BMW X4',
+                album: [
+                    'https://bgtworkshop.ru/upload/image/ecbf1a55206e3d1f5fc9a24218d217bb/picture.jpg',
+                    'https://bgtworkshop.ru/upload/image/6db9e150ac2270f860764b489b074347/picture.jpg',
+                    'https://bgtworkshop.ru/upload/image/dea1aa52adc734868e32185c02fbe608/picture.jpg',
+                    'https://bgtworkshop.ru/upload/image/626466b363152234c6adbc923b288723/picture.jpg',
+                    'https://bgtworkshop.ru/upload/image/a7d0303fe6835cfdc330a12db7172b12/picture.jpg'
+                ]
+            },
+            // 2. Видео, которые у вас уже были
             {
                 type: 'video',
                 id: 'rElNj9-rT_0',
@@ -482,35 +496,8 @@
                 type: 'video',
                 id: 'p4RDxtyXbCc',
                 title: 'BMW X5 - ставим комфортные сидения(в ходе работ)'
-            },
-            {
-                type: 'video',
-                id: '',
-                title: ''
-            },
-            {
-                type: 'video',
-                id: '',
-                title: ''
-            },
-            {
-                type: 'video',
-                id: '',
-                title: ''
             }
-        ],
-            {
-                type: 'photo',
-                cover: 'https://bgt-nebo.ru/upload/image/a030a4eed9f30f4ed60b674d758b40a3/big.jpg',
-                title: 'Установим систему «Звёздное небо» в салон Вашего автомобиля',
-                album: [
-                    'https://bgt-nebo.ru/upload/image/a030a4eed9f30f4ed60b674d758b40a3/big.jpg',
-                    'https://bgt-nebo.ru/upload/image/b338e68742facafb619efc117a322dd0/big.jpg',
-                    'https://bgt-nebo.ru/upload/image/b89288a3f838c6bfa6a2a4a68e1ebe3e/big.jpg',
-                    'https://bgt-nebo.ru/upload/image/f0d63ccdfe6b45a0cdccb5211e41bc20/big.jpg',
-                    'https://bgt-nebo.ru/upload/image/c9551e6b21504aba57f542a6f0aa51cb/big.jpg'
-                ]
-            }
+        ]
     };
 
     /* ---------- РЕНДЕР ОДНОЙ КАРТОЧКИ ---------- */
