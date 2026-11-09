@@ -293,10 +293,10 @@
 
     // YouTube Shorts (вертикальное видео 9:16)
     function shortCard(item, galleryName) {
-        // У шортсов превью тоже доступно по стандартному пути
         const thumb = `https://img.youtube.com/vi/${item.id}/hqdefault.jpg`;
+        // Меняем ссылку на классический watch?v=, чтобы плеер YouTube не ругался
         return `
-            <a href="https://www.youtube.com/shorts/${item.id}"
+            <a href="https://www.youtube.com/watch?v=${item.id}" 
                class="video-card glightbox"
                data-gallery="${galleryName}"
                data-type="video"
