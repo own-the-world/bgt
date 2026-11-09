@@ -205,7 +205,7 @@
                 album: [
                     'https://a1.drive-data.ru/jQAAAgDJ2-A-960.jpg'
                 ]
-            }
+            },
             {
                 type: 'video',
                 id: 'sxm7GSJd69s',
