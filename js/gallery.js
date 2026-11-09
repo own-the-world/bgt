@@ -160,7 +160,7 @@
                     'https://bgtworkshop.ru/upload/image/944250dd4d8a17230c7251fab9757883/picture.jpg',
                     'https://bgtworkshop.ru/upload/image/8468360830d03d2346656b961ff517df/picture.jpg'
                 ]
-            }
+            },
             {
                 type: 'video',
                 id: 'skjIN49gHZ4',
