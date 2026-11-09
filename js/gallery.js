@@ -375,8 +375,102 @@
                 title: 'Mercedes W140 - современная мультимедиа в легендарный авто!'
             },
         ],
-        'starry-sky': [],
-        'rear-monitors': []
+        'starry-sky': [
+            {
+                type: 'photo',
+                cover: 'https://bgt-nebo.ru/upload/image/a030a4eed9f30f4ed60b674d758b40a3/big.jpg',
+                title: 'Установим систему «Звёздное небо» в салон Вашего автомобиля',
+                album: [
+                    'https://bgt-nebo.ru/upload/image/a030a4eed9f30f4ed60b674d758b40a3/big.jpg',
+                    'https://bgt-nebo.ru/upload/image/b338e68742facafb619efc117a322dd0/big.jpg',
+                    'https://bgt-nebo.ru/upload/image/b89288a3f838c6bfa6a2a4a68e1ebe3e/big.jpg',
+                    'https://bgt-nebo.ru/upload/image/f0d63ccdfe6b45a0cdccb5211e41bc20/big.jpg',
+                    'https://bgt-nebo.ru/upload/image/c9551e6b21504aba57f542a6f0aa51cb/big.jpg'
+                ]
+            }
+        ],
+        'rear-monitors': [
+            {
+                type: 'video',
+                id: 'Dm79bifySAQ',
+                title: 'Мониторы снимаемые на примере Audi Q7'
+            },
+            {
+                type: 'video',
+                id: 'punU9iB-AH8',
+                title: 'СЪЕМНЫЕ МОНИТОРЫ на Audi А8'
+            },
+            {
+                type: 'video',
+                id: 'BvFoYcuEV58',
+                title: 'OEM Мониторы на спинку сидений на примере X5 (E70)'
+            },
+            {
+                type: 'video',
+                id: 'UlPROniLQuA',
+                title: 'BMW G-Series - мониторы для задних пассажиров'
+            },
+            {
+                type: 'video',
+                id: 'lIkRRafnfyA',
+                title: 'BMW 7er G11/G12 - Apple TV + iPhone Mirrorlink на задние мониторы'
+            },
+            {
+                type: 'video',
+                id: 'Lnjrj1K7XYI',
+                title: 'BMW - консольный монитор'
+            },
+            {
+                type: 'video',
+                id: 'daXPFLQoeZk',
+                title: 'Lexus LX570 2008-2015 - замена штатных мониторов для пассажиров'
+            },
+            {
+                type: 'video',
+                id: 'jT8FkZV6iGM',
+                title: 'Мерседес - мониторы для задних пассажиров'
+            },
+            {
+                type: 'video',
+                id: 'xNJ-LD3882s',
+                title: 'Мониторы для задних пассажиров на примере Mercedes / Maybach W222'
+            },
+            {
+                type: 'video',
+                id: 'RDKg_Sqt9pg',
+                title: 'Mercedes V classe w447 потолочный монитор, Apple TV, доп мультимедиа'
+            },
+            {
+                type: 'video',
+                id: '4hMHpFGlH5w',
+                title: 'Mercedes Vito, Viano - доп мультимедиа вперёд + задние мониторы'
+            },
+            {
+                type: 'video',
+                id: 'o9Z2-L2eQUo',
+                title: 'МУЛЬТИМЕДИА И ВИДЕОРЕГИСТРАТОР на Infiniti'
+            },
+            {
+                type: 'video',
+                id: 'gz3ayu1AYJ0',
+                title: 'Toyota Alphard - большой потолочный монитор'
+            },
+            {
+                type: 'video',
+                id: '00kbf-NbXBk',
+                title: 'Toyota Fortuner - доп мультимедиа + 360 + 3 доп монитора пассажирам'
+            },
+            {
+                type: 'video',
+                id: 'X0g-MR3AHIc',
+                title: 'Volvo XC-90 2015+, S90, V90 - Multimedia на штатный монитор + мониторы в подголовники'
+            },
+            {
+                type: 'video',
+                id: 'D9QrqswD1eQ',
+                title: 'Мониторы снимаемые для задних пассажиров на примере VW Touareg'
+            }
+        ]
     };
 
     /* ---------- РЕНДЕР ОДНОЙ КАРТОЧКИ ---------- */
