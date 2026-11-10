@@ -76,7 +76,7 @@
                 <a href="https://t.me/+79024833907" target="_blank" rel="noopener" class="fab-btn" title="Telegram">
                     <img src="images/telegram.png" alt="Telegram">
                 </a>
-                <a href="https://max.ru/u/f9LHodD0cOJt4Ep-B9XtRVHkVUBueMVmFW9DdJmHB7o5uzHkMcPcw3zmVeE" target="_blank" rel="noopener" class="fab-btn" title="MAX">
+                <a href="https://max.ru/u/f9LHodD0cOIyuf0Xs1q6RmxbxV8hx89ibG1MHPfa0l5d-aEDnwJlTfb8G_s" target="_blank" rel="noopener" class="fab-btn" title="MAX">
                     <img src="images/max.png" alt="MAX">
                 </a>
                 <a href="tel:${PHONE}" class="fab-btn" title="Позвонить">
