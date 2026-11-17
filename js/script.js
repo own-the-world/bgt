@@ -2,6 +2,21 @@
    SCRIPT.JS — поведение общих блоков
    ========================================================= */
 
+/* Хелпер: нормализация и валидация телефона (вынесен наружу) */
+function normalizePhone(raw) {
+    const digits = raw.replace(/\D/g, ''); // оставляем только цифры
+
+    // 11 цифр: 7XXXXXXXXXX или 8XXXXXXXXXX
+    if (digits.length === 11 && (digits[0] === '7' || digits[0] === '8')) {
+        return '+7' + digits.slice(1);
+    }
+    // 10 цифр: XXXXXXXXXX (без кода страны)
+    if (digits.length === 10) {
+        return '+7' + digits;
+    }
+    return null; // невалидно
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ==================== 1. FAB ==================== */
@@ -87,43 +102,88 @@ document.addEventListener('DOMContentLoaded', () => {
             burgerOverlay.classList.remove('open');
             burgerToggle && burgerToggle.classList.remove('active');
         }
-        mapModal.classList.add('open');
+        if (mapModal) mapModal.classList.add('open');
     });
 
-    closeMapBtn.addEventListener('click', () => mapModal.classList.remove('open'));
-    mapModal.addEventListener('click', (e) => {
-        if (e.target === mapModal) mapModal.classList.remove('open');
-    });
+    if (closeMapBtn && mapModal) {
+        closeMapBtn.addEventListener('click', () => mapModal.classList.remove('open'));
+        mapModal.addEventListener('click', (e) => {
+            if (e.target === mapModal) mapModal.classList.remove('open');
+        });
+    }
 
     /* ==================== 5. ОТПРАВКА ФОРМЫ ==================== */
     const form = document.getElementById('leadForm');
+
     if (form) {
+        // Надёжный доступ к полям (form.name — это свойство самой формы!)
+        const nameInput    = form.elements.name;
+        const phoneInput   = form.elements.phone;
+        const messageInput = form.elements.message;
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
+
             const msg = document.getElementById('formMessage');
             const submitBtn = form.querySelector('button[type="submit"]');
-            
-            const name = form.name.value.trim();
-            const phone = form.phone.value.trim();
-            
+
+            const name = nameInput ? nameInput.value.trim() : '';
+            const phoneRaw = phoneInput ? phoneInput.value.trim() : '';
+
             // Ищем селект (главная) или скрытое поле (услуги)
             const serviceSelect = document.getElementById('serviceSelect');
             const serviceHidden = document.getElementById('serviceHidden');
-            
-            let serviceValue = serviceSelect ? serviceSelect.value : (serviceHidden ? serviceHidden.value : '');
 
+            let serviceValue = serviceSelect
+                ? serviceSelect.value
+                : (serviceHidden ? serviceHidden.value : '');
+
+            // ---- Валидация имени ----
+            if (!name) {
+                msg.textContent = 'Укажите имя';
+                msg.className = 'form-message error';
+                nameInput && nameInput.focus();
+                return;
+            }
+            if (name.length < 2) {
+                msg.textContent = 'Имя слишком короткое';
+                msg.className = 'form-message error';
+                nameInput && nameInput.focus();
+                return;
+            }
+
+            // ---- Валидация услуги ----
             if (serviceSelect && !serviceValue) {
                 msg.textContent = 'Пожалуйста, выберите услугу';
                 msg.className = 'form-message error';
                 return;
             }
 
-            if (!name || !phone) {
-                msg.textContent = 'Заполните имя и телефон';
+            // ---- Валидация телефона ----
+            if (!phoneRaw) {
+                msg.textContent = 'Укажите номер телефона';
                 msg.className = 'form-message error';
+                phoneInput && phoneInput.focus();
                 return;
             }
 
+            // Разрешаем только цифры, +, пробел, (, ), -
+            if (!/^[+\d\s()\-]+$/.test(phoneRaw)) {
+                msg.textContent = 'Телефон может содержать только цифры, +, пробелы, скобки и дефис';
+                msg.className = 'form-message error';
+                phoneInput && phoneInput.focus();
+                return;
+            }
+
+            const phone = normalizePhone(phoneRaw);
+            if (!phone) {
+                msg.textContent = 'Некорректный номер. Пример: +7 (999) 123-45-67';
+                msg.className = 'form-message error';
+                phoneInput && phoneInput.focus();
+                return;
+            }
+
+            // ---- Отправка ----
             submitBtn.disabled = true;
             submitBtn.textContent = 'Отправка...';
             msg.textContent = '';
@@ -131,15 +191,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 const workerUrl = 'https://bgt-form-handler.magd6660545.workers.dev/';
-                
+
                 const response = await fetch(workerUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
                         name: name,
-                        phone: phone,
+                        phone: phone, // нормализованный номер
                         service: serviceValue,
-                        message: form.message.value.trim()
+                        message: messageInput ? messageInput.value.trim() : ''
                     })
                 });
 
@@ -149,6 +209,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     msg.textContent = 'Спасибо! Заявка отправлена.';
                     msg.className = 'form-message success';
                     form.reset();
+                    if (phoneInput) phoneInput.classList.remove('invalid');
+                    if (nameInput) nameInput.classList.remove('invalid');
                 } else {
                     throw new Error(result.error || 'Ошибка сервера');
                 }
@@ -161,5 +223,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.textContent = 'Отправить заявку';
             }
         });
+
+        // ---- Live-валидация телефона ----
+        if (phoneInput) {
+            phoneInput.addEventListener('blur', () => {
+                const raw = phoneInput.value.trim();
+                if (!raw) return;
+                phoneInput.classList.toggle('invalid', !normalizePhone(raw));
+            });
+
+            phoneInput.addEventListener('input', () => {
+                phoneInput.classList.remove('invalid');
+            });
+        }
     }
 });
