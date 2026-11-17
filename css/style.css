@@ -777,4 +777,7 @@ footer .footer-messengers a { display: inline-flex; align-items: center; gap: 6p
     box-sizing: border-box !important;
 }
 
-
+input.invalid {
+    border-color: #e53935;
+    outline-color: #e53935;
+}
